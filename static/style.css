@@ -1417,10 +1417,10 @@ input:focus {
         background-color: #ed3974; }
   .single-catagory-post .post-content {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 60%;
-    flex: 0 0 60%;
-    max-width: 60%;
-    width: 60%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
     position: relative;
     z-index: 1;
     padding-left: 30px; }

@@ -1608,9 +1608,9 @@ input:focus {
         }
     }
     .post-content {
-        @include flex(0 0 60%);
-        max-width: 60%;
-        width: 60%;
+        @include flex(0 0 100%);
+        max-width: 100%;
+        width: 100%;
         position: relative;
         z-index: 1;
         padding-left: 30px;
