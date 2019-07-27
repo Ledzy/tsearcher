@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +13,10 @@
     <title>Mag - Video &amp; Magazine HTML Template</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
 </head>
 
@@ -38,7 +39,7 @@
                 <nav class="classy-navbar justify-content-between" id="magNav">
 
                     <!-- Nav brand -->
-                    <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                    <a href="index.html" class="nav-brand"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -99,7 +100,7 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/49.jpg);">
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(../../static/img/bg-img/49.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -121,7 +122,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Features</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Single Video</li>
+                            <li class="breadcrumb-item active" aria-current="page">Single Post</li>
                         </ol>
                     </nav>
                 </div>
@@ -133,27 +134,13 @@
     <!-- ##### Post Details Area Start ##### -->
     <section class="post-details-area">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="single-video-area bg-white mb-30 box-shadow">
-                        <iframe src="https://www.youtube.com/embed/J_x3-pgV-Ko" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <!-- Video Meta Data -->
-                        <div class="video-meta-data d-flex align-items-center justify-content-between">
-                            <h6 class="total-views">1034 Views</h6>
-                            <div class="like-dislike d-flex align-items-center">
-                                <button type="button"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834 Like</button>
-                                <button type="button"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 34 Dislike</button>
-                                <p><i class="fa fa-comments-o" aria-hidden="true"></i> 234 Comments</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="row justify-content-center">
                 <!-- Post Details Content Area -->
                 <div class="col-12 col-xl-8">
                     <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+                        <div class="blog-thumb mb-30">
+                            <img src="{% static 'img/bg-img/50.jpg' %}" alt="">
+                        </div>
                         <div class="blog-content">
                             <div class="post-meta">
                                 <a href="#">MAY 8, 2018</a>
@@ -183,7 +170,7 @@
                                     <p>Aliquam venenatis dui elit, et viverra mi maximus quis. Etiam vel auctor elit. Ut ac eros suscipit, lobortis felison, vulputate tellus. Suspendisse hendrerit aliquet lectus.</p>
                                 </div>
                                 <div class="col-12 col-lg-4">
-                                    <img class="mb-15" src="img/bg-img/51.jpg" alt="">
+                                    <img class="mb-15" src="{% static 'img/bg-img/51.jpg' %}" alt="">
                                 </div>
                             </div>
 
@@ -206,7 +193,7 @@
                             <!-- Post Author -->
                             <div class="post-author d-flex align-items-center">
                                 <div class="post-author-thumb">
-                                    <img src="img/bg-img/52.jpg" alt="">
+                                    <img src="{% static 'img/bg-img/52.jpg' %}" alt="">
                                 </div>
                                 <div class="post-author-desc pl-4">
                                     <a href="#" class="author-name">Alan Shaerer</a>
@@ -217,7 +204,7 @@
                     </div>
 
                     <!-- Related Post Area -->
-                    <div class="related-post-area bg-white mb-30 px-30 pt-30 pb-0 box-shadow">
+                    <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
                         <!-- Section Title -->
                         <div class="section-heading">
                             <h5>Related Post</h5>
@@ -228,7 +215,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post style-4 mb-30">
                                     <div class="post-thumbnail">
-                                        <img src="img/bg-img/29.jpg" alt="">
+                                        <img src="{% static 'img/bg-img/29.jpg' %}" alt="">
                                     </div>
                                     <div class="post-content">
                                         <a href="single-post.html" class="post-title">Dentists Are Smiling Over Painless Veneer</a>
@@ -245,7 +232,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post style-4 mb-30">
                                     <div class="post-thumbnail">
-                                        <img src="img/bg-img/30.jpg" alt="">
+                                        <img src="{% static 'img/bg-img/30.jpg' %}" alt="">
                                         <a href="video-post.html" class="video-play"><i class="fa fa-play"></i></a>
                                         <span class="video-duration">09:27</span>
                                     </div>
@@ -264,7 +251,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post style-4 mb-30">
                                     <div class="post-thumbnail">
-                                        <img src="img/bg-img/28.jpg" alt="">
+                                        <img src="{% static 'img/bg-img/28.jpg' %}" alt="">
                                     </div>
                                     <div class="post-content">
                                         <a href="single-post.html" class="post-title">A Guide To Rocky Mountain Vacations</a>
@@ -294,7 +281,7 @@
                                 <div class="comment-content d-flex">
                                     <!-- Comment Author -->
                                     <div class="comment-author">
-                                        <img src="img/bg-img/53.jpg" alt="author">
+                                        <img src="{% static 'img/bg-img/53.jpg' %}" alt="author">
                                     </div>
                                     <!-- Comment Meta -->
                                     <div class="comment-meta">
@@ -314,7 +301,7 @@
                                         <div class="comment-content d-flex">
                                             <!-- Comment Author -->
                                             <div class="comment-author">
-                                                <img src="img/bg-img/54.jpg" alt="author">
+                                                <img src="{% static 'img/bg-img/54.jpg' %}" alt="author">
                                             </div>
                                             <!-- Comment Meta -->
                                             <div class="comment-meta">
@@ -337,7 +324,7 @@
                                 <div class="comment-content d-flex">
                                     <!-- Comment Author -->
                                     <div class="comment-author">
-                                        <img src="img/bg-img/55.jpg" alt="author">
+                                        <img src="{% static 'img/bg-img/55.jpg' %}" alt="author">
                                     </div>
                                     <!-- Comment Meta -->
                                     <div class="comment-meta">
@@ -422,7 +409,7 @@
 
                         <!-- Sidebar Widget -->
                         <div class="single-sidebar-widget">
-                            <a href="#" class="add-img"><img src="img/bg-img/add2.png" alt=""></a>
+                            <a href="#" class="add-img"><img src="{% static 'img/bg-img/add2.png' %}" alt=""></a>
                         </div>
 
                         <!-- Sidebar Widget -->
@@ -435,7 +422,7 @@
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="img/bg-img/14.jpg" alt="">
+                                    <img src="{% static 'img/bg-img/14.jpg' %}" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">TV Show</a>
@@ -446,7 +433,7 @@
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="img/bg-img/15.jpg" alt="">
+                                    <img src="{% static 'img/bg-img/15.jpg' %}" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">Game Channel</a>
@@ -457,7 +444,7 @@
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="img/bg-img/16.jpg" alt="">
+                                    <img src="{% static 'img/bg-img/16.jpg' %}" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">Sport Channel</a>
@@ -468,7 +455,7 @@
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="img/bg-img/17.jpg" alt="">
+                                    <img src="{% static 'img/bg-img/17.jpg' %}" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">Travel Channel</a>
@@ -479,7 +466,7 @@
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="img/bg-img/18.jpg" alt="">
+                                    <img src="{% static 'img/bg-img/18.jpg' %}" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">LifeStyle Channel</a>
@@ -519,7 +506,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="footer-widget">
                         <!-- Logo -->
-                        <a href="index.html" class="foo-logo"><img src="img/core-img/logo2.png" alt=""></a>
+                        <a href="index.html" class="foo-logo"><img src="{% static 'img/core-img/logo2.png' %}" alt=""></a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         <div class="footer-social-info">
                             <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -559,7 +546,7 @@
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style-2 d-flex">
                             <div class="post-thumbnail">
-                                <img src="img/bg-img/12.jpg" alt="">
+                                <img src="{% static 'img/bg-img/12.jpg' %}" alt="">
                             </div>
                             <div class="post-content">
                                 <a href="single-post.html" class="post-title">Take A Romantic Break In A Boutique Hotel</a>
@@ -573,7 +560,7 @@
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style-2 d-flex">
                             <div class="post-thumbnail">
-                                <img src="img/bg-img/13.jpg" alt="">
+                                <img src="{% static 'img/bg-img/13.jpg' %}" alt="">
                             </div>
                             <div class="post-content">
                                 <a href="single-post.html" class="post-title">Travel Prudently Luggage And Carry On</a>
@@ -618,15 +605,15 @@
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
     <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
     <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
     <!-- Active js -->
-    <script src="js/active.js"></script>
+    <script src="{% static 'js/active.js' %}"></script>
 </body>
 
 </html>
