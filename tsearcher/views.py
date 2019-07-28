@@ -6,7 +6,10 @@ User = get_user_model()
 
 
 def index(request):
-    return render(request,'index.html')
+    user = request.user
+    context = {}
+    context['user'] = user
+    return render(request,'index.html',context)
 
 
 def login_(request):
@@ -18,7 +21,9 @@ def login_(request):
         password = request.POST.get("password")
 
         user = authenticate(username=username,password=password)
+        print(username)
         if user is not None:
+            print("login user")
             login(request,user)
             return redirect('/')
 

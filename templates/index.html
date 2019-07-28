@@ -62,8 +62,15 @@
                             <div class="classynav">
                                 <ul>
                                     <li class="active"><a href="index.html">主页</a></li>
-                                    <li><a href="archive.html">Archive</a></li>
-                                    <li><a href="#">Pages</a>
+                                    <li><a href="/blog">教学博客</a></li>
+                                    <li><a href="about.html">关于</a></li>
+                                    <li><a href="contact.html">联系我们</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li>欢迎您,{{user.username}}</li>
+                                    {% else %}
+                                    <li><a href="/login">登录</a></li>
+                                    {% endif %}
+                                    <!-- <li><a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html">Home</a></li>
                                             <li><a href="archive.html">Archive</a></li>
@@ -73,10 +80,9 @@
                                             <li><a href="submit-video.html">上传教学资源</a></li>
                                             <li><a href="login.html">登录</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     
-                                    <li><a href="about.html">关于</a></li>
-                                    <li><a href="contact.html">联系我们</a></li>
+                                    
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -84,12 +90,12 @@
 
                         <div class="top-meta-data d-flex align-items-center">
                             <!-- Top Search Area -->
-                            <div class="top-search-area">
+                            <!-- <div class="top-search-area">
                                 <form action="index.html" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Search and hit enter...">
                                     <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
-                            </div>
+                            </div> -->
                             <!-- Login -->
                             <a href="/login" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
                             <!-- Submit Video -->

@@ -8,7 +8,7 @@ from blog.models import Blog
 
 # Create your models here.
 class UserExtension(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE,related_name="extension",parent_link=True,primary_key=True)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,related_name="extension",parent_link=True)
     register_date = models.DateTimeField(auto_now_add=True)
     last_active = models.DateTimeField(auto_now=True)
     portrait = models.ImageField(null=True)
