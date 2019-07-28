@@ -19,7 +19,10 @@ from . import views
 from blog.views import blog_list
 
 urlpatterns = [
-    path('',views.index,name = 'home'),
+    path('',views.index, name='index'),
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
+    path('blog/',include('blog.urls')),
+    path('account/',include('account.urls')),
+    path('login/',views.login_, name='login'),
+    path('signup/',views.signup_, name='signup'),
 ]
