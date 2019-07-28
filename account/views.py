@@ -13,4 +13,4 @@ def index(request):
 def logout_(request):
     if request.user.is_authenticated:
         logout(request)
-        return redirect('index')
+        return redirect('home')

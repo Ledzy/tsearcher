@@ -11,6 +11,12 @@ def index(request):
     context['user'] = user
     return render(request,'index.html',context)
 
+def about(request):
+    return render(request,'about.html')
+
+def contact_us(request):
+    return render(request,'contact.html')
+
 
 def login_(request):
     if request.user.is_authenticated:
