@@ -145,11 +145,11 @@
                                 <a href="{% url 'blog_detail' blog.pk %}" class="post-title">{{ blog.title }}</a>
                                 <!-- Post Meta -->
                                 <div class="post-meta-2">
-                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
+                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i>{{ blog.readed_num }}</a>
                                     <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
                                 </div>
-                                    <p>{{ blog.content|truncatechars:50 }}</p>
+                                    <p>{{ blog.content|safe|truncatechars:120 }}...</p>
                                 <hr>
                             </div>
                             {% empty %}
@@ -162,10 +162,40 @@
                         <!-- Pagination -->
                         <nav>
                             <ul class="pagination">
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="ti-angle-right"></i></a></li>
+                                {# 上一页 #}
+                                <li class="page-item">
+                                {% if page_of_blogs.has_previous %}
+                                <a class="page-link" href="?page={{ page_of_blogs.previous_page_number }}" aria-label="Previous">
+                                    <i class="ti-angle-right"></i>
+                                </a>
+                                {% else %}
+                                    <i class="page-link ti-angle-left"></i>
+                                {% endif %}
+                                    </li>
+                                {# 全部页码 #}
+                                {% for page_num in page_range %}
+                                    {% if page_num == page_of_blogs.number %}
+                                        <li class="page-item active"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                    {% else %}
+                                        {% if page_num == '...' %}
+                                            <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                        {% else %}
+                                            <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                {# 下一页 #}
+                                <li class="page-item">
+                                    {% if page_of_blogs.has_next %}
+                                        <a class="page-link" href="?page={{ page_of_blogs.next_page_number }}" aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    {% else %}
+                                        <i class="page-link ti-angle-right"></i>
+                                    {% endif %}
+                                </li>
+
+
                             </ul>
                         </nav>
 
@@ -198,13 +228,11 @@
 
                             <!-- Catagory Widget -->
                             <ul class="catagory-widgets">
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Life Style</span> <span>35</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Travel</span> <span>30</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Foods</span> <span>13</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Game</span> <span>06</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Sports</span> <span>28</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Football</span> <span>08</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> TV Show</span> <span>13</span></a></li>
+                                {% for blog_type in blog_types %}
+                                <li><a href="{% url 'blogs_with_type' blog_type.pk %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ blog_type.type_name }}</span> <span>{{ blog_type.blog_count }}</span></a></li>
+                                {% empty %}
+                                <li>暂无分类</li>
+                                {% endfor %}
                             </ul>
                         </div>
 
@@ -326,16 +354,11 @@
                         <h6 class="widget-title">Categories</h6>
                         <nav class="footer-widget-nav">
                             <ul>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Life Style</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tech</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Travel</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Music</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Foods</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Fashion</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Game</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Football</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Sports</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> TV Show</a></li>
+                                {% for blog_type in blog_types %}
+                                <li><a href="{% url 'blogs_with_type' blog_type.pk %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ blog_type.type_name }}</a></li>
+                                {% empty %}
+                                <li>暂无分类</li>
+                                {% endfor %}
                             </ul>
                         </nav>
                     </div>

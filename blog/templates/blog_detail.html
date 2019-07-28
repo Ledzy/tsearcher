@@ -149,12 +149,12 @@
                             <h4 class="post-title">{{ blog.title }}</h4>
                             <!-- Post Meta -->
                             <div class="post-meta-2">
-                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
+                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{ blog.readed_num }}</a>
                                 <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
                             </div>
 
-                            <p>{{ blog.content }}</p>
+                            <p>{{ blog.content|safe }}</p>
 
                             <!-- Like Dislike Share -->
                             <div class="like-dislike-share my-5">
@@ -497,16 +497,11 @@
                         <h6 class="widget-title">Categories</h6>
                         <nav class="footer-widget-nav">
                             <ul>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Life Style</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Tech</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Travel</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Music</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Foods</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Fashion</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Game</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Football</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Sports</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> TV Show</a></li>
+                                {% for blog_type in blog_types %}
+                                <li><a href="{% url 'blogs_with_type' blog_type.pk %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ blog_type.type_name }}</a></li>
+                                {% empty %}
+                                <li>暂无分类</li>
+                                {% endfor %}
                             </ul>
                         </nav>
                     </div>
