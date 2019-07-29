@@ -59,8 +59,8 @@ def get_index(df):
     return index
 
 def BM25_one_word(word,document_idx,index,df,avg_document_len,document_count,qtf=1,k1=1,b=1):
-    if document_idx not in index[word].document_idx:
-        return 0
+    if word not in index: return 0
+    if document_idx not in index[word].document_idx: return 0
     
     tf = index[word].document_idx[document_idx].count
     doc_len = len(df.at[document_idx,'text'])

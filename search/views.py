@@ -1,6 +1,7 @@
 import pandas as pd
 import random
 from django.shortcuts import render
+from django.http import StreamingHttpResponse
 from .query import get_documents, get_index
 from .models import TeachingPlan, Slides
 
@@ -31,3 +32,20 @@ def query_info(request,query):
     
     context['files'] = files
     return render(request,'search.html',context)
+
+def download(request,filename):
+    filepath = "manage.py"
+    response = StreamingHttpResponse(file_iterator(filepath))
+    response['Content-Type']='application/octet-stream'
+    response['Content-Disposition']='attachment;filename="manage.py"'
+    return response
+
+
+def file_iterator(file_name, chunk_size=1024):
+    with open(file_name) as f:
+        while True:
+            c = f.read(chunk_size)
+            if c:
+                yield c
+            else:
+                break
