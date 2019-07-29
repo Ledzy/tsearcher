@@ -3,7 +3,7 @@
 <html >
 <head>
    
-    <title>Neer - Real Estate HTML Template</title>
+    <title>Tsearcher-Best tool for teacher</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
@@ -98,8 +98,8 @@
                         <li>
                             <div class="dropdown btns">
                                 <a class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{% static 'img/avatar/avatar-1.jpg' %}" alt="avatar">
-                                    My Account
+                                    <img src="{{ue.portrait}}" alt="avatar">
+                                        {{request.user.username}}
                                 </a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="dashboard.html">Dashboard</a>
@@ -177,7 +177,7 @@
                                     <div class="col-lg-3 col-md-3">
                                         <!-- Edit profile photo -->
                                         <div class="edit-profile-photo">
-                                            <img src="{% static 'img/avatar/avatar-6.jpg' %}" alt="profile-photo" class="img-fluid">
+                                            <img src="{{ue.portrait}}" alt="profile-photo" class="img-fluid">
                                             <div class="change-photo-btn">
                                                 <div class="photoUpload">
                                                     <span><i class="fa fa-upload"></i></span>

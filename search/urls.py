@@ -5,6 +5,6 @@ app_name = 'search'
 
 urlpatterns = [
     path('', search_page),
-    path('download/<str:filename>',download, name="download"),
+    path('download/<int:file_index>',download, name="download"),
     path('<str:query>', query_info, name="query_info"),
 ]

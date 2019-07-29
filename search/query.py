@@ -1,6 +1,7 @@
 import pandas as pd
 import jieba
 import math
+import jieba.analyse
 
 
 
@@ -80,18 +81,51 @@ def BM25(sentence,document_idx,index,df,avg_document_len,document_count):
 
 def get_documents(sentence,index,document_count,df,avg_document_len,top_count=10):
     scores = {}
+    sentence = seg_sentence(sentence)
+
     for document_idx in range(document_count):
         scores[document_idx] = BM25(sentence,document_idx,index,df,avg_document_len,document_count)
 
-    ordered_scores = sorted(scores.items(),key=lambda x: x[1], reverse=True)[:top_count]
+    ordered_scores = sorted(scores.items(),key=lambda x: x[1], reverse=True)[:50]
+    
     top_documents_idx = list(zip(*ordered_scores))[0]
+    
+    #找到数量最多的科目，只显示该科目的搜索结果
+    subject_count = {}
+    for idx in top_documents_idx:
+        subject = df.at[idx,'subject']
+        subject_count[subject] = subject_count.get(subject,0) + 1
+
+    target_subject = "数学"
+    for key in subject_count.keys():
+        if subject_count[key] > subject_count[target_subject]:
+            target_subject = key
+    
+    top_documents_idx = list(filter(lambda idx: df.at[idx,'subject']==target_subject ,top_documents_idx))[:top_count]
 
     return top_documents_idx
 
+def stopwordslist(filepath):  
+    stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]  
+    return stopwords  
+  
+# 对句子进行分词  
+def seg_sentence(sentence):  
+    sentence_seged = jieba.cut(sentence.strip())  
+    outstr = ''  
+    for word in sentence_seged:
+        if word not in stopwords:  
+            if word != '\t':  
+                outstr += word  
+                outstr += " "  
+    return outstr  
+
+stopwords = stopwordslist('stopwords.txt')  # 这里加载停用词的路径  
+
 if __name__ == "__main__":
+    query = "传感器是如何工作的"
     df = pd.read_csv('teaching_outline.csv')
     document_count = df.shape[0]
     avg_document_len = df['text'].str.len().mean()
     index = get_index(df)
-    query = "传感器"
     print(get_documents(query,index,document_count,df,avg_document_len))
