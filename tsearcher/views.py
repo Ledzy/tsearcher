@@ -27,7 +27,6 @@ def login_(request):
         password = request.POST.get("password")
 
         user = authenticate(username=username,password=password)
-        print(username)
         if user is not None:
             print("login user")
             login(request,user)
