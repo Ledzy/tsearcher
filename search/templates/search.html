@@ -165,7 +165,7 @@
                             </div>
                         </div> -->
                         
-                        {% for filename in filenames %}
+                        {% for file in files %}
                         <div class="single-team-member d-flex align-items-center">
                             <!-- <div class="team-member-thumbnail">
                                 <img src="img/bg-img/36.jpg" alt="">
@@ -176,9 +176,9 @@
                                 </div>
                             </div> -->
                             <div class="team-member-content">
-                                <h6>{{filename}}</h6>
-                                <span>Reporter</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur mauris id scelerisque eleifend. Nunc vestibulum cursea quam at scelerisque.</p>
+                                <h6>{{file.filename}}</h6>
+                                <span>star:{{file.star}}</span>
+                                <p>{{file.content|truncatechars:120}}</p>
                             </div>
                         </div>
                         {% endfor %}

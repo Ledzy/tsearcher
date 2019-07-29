@@ -1,6 +1,8 @@
-from django.shortcuts import render
 import pandas as pd
+import random
+from django.shortcuts import render
 from .query import get_documents, get_index
+from .models import TeachingPlan, Slides
 
 
 df = pd.read_csv('teaching_outline.csv')
@@ -15,9 +17,17 @@ def search_page(request):
 
 def query_info(request,query):
     context = {}
-
     document_idx = get_documents(query,index,document_count,df,avg_document_len)
-    filenames = [df.at[i,'file_name'] for i in document_idx]
-    context['filenames'] = filenames
+    files = []
+
+    for i in document_idx:
+        filename = df.at[i,'file_name']
+        content = df.at[i,'text']
+        star = random.randint(20,50)/10
+
+        TeachingPlan.objects.filter(index=i).delete()
+        plan = TeachingPlan.objects.create(index=i,content=content,star=star,filename=filename)
+        files.append(plan)
     
+    context['files'] = files
     return render(request,'search.html',context)
