@@ -49,6 +49,7 @@ def blog_list(request):
     context = get_blog_list_common_data(request, blogs_all_list)
     return render(request, 'blog_list.html', context)
 
+
 def blogs_with_type(request, blog_type_pk):
     blog_type = get_object_or_404(BlogType, pk=blog_type_pk)
     blogs_all_list = Blog.objects.filter(blog_type=blog_type)
