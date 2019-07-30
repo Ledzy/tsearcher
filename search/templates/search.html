@@ -180,7 +180,7 @@
                                 <span>评分:{{file.star}}</span>
                                 <span>科目:{{file.subject.type_name}}</span>
                                 <p>{{file.content|truncatechars:120}}</p>
-                                <div class="col-md-4"><a href="{{ MEDIA_URL }}/search/download/{{file.index}}">下载(待装饰)</a></div>
+                                <div class="col-md-4"><a href="/search/download/{{file.index}}">下载(待装饰)</a></div>
                             </div>
                         </div>
                         {% endfor %}

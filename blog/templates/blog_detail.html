@@ -70,8 +70,6 @@
 
                             <div class="like-dislike-share my-5" onclick="likeChange(this, '{% get_content_type blog %}', {{ blog.pk }})">
                                 <h4 class="share">{% get_like_count blog %}<span>喜欢</span></h4>
-                                <a href="#" class="glyphicon glyphicon-thumbs-up {% get_like_status blog %}"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-                                <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
                             </div>
 
                             <!-- Post Author -->
@@ -81,7 +79,7 @@
                                 </div>
                                 <div class="post-author-desc pl-4">
                                     <a href="#" class="author-name">{{ blog.author }}</a>
-                                    <p>Duis tincidunt turpis sodales, tincidunt nisi et, auctor nisi. Curabitur vulputate sapien eu metus ultricies fermentum nec vel augue. Maecenas eget lacinia est.</p>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>

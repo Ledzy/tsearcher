@@ -86,22 +86,23 @@ def get_documents(sentence,index,document_count,df,avg_document_len,top_count=10
     for document_idx in range(document_count):
         scores[document_idx] = BM25(sentence,document_idx,index,df,avg_document_len,document_count)
 
-    ordered_scores = sorted(scores.items(),key=lambda x: x[1], reverse=True)[:50]
+    ordered_scores = sorted(scores.items(),key=lambda x: x[1], reverse=True)[:top_count]
     
     top_documents_idx = list(zip(*ordered_scores))[0]
     
     #找到数量最多的科目，只显示该科目的搜索结果
-    subject_count = {}
-    for idx in top_documents_idx:
-        subject = df.at[idx,'subject']
-        subject_count[subject] = subject_count.get(subject,0) + 1
+    # subject_count = {}
+    # for idx in top_documents_idx:
+    #     subject = df.at[idx,'subject']
+    #     subject_count[subject] = subject_count.get(subject,0) + 1
 
-    target_subject = "数学"
-    for key in subject_count.keys():
-        if subject_count[key] > subject_count[target_subject]:
-            target_subject = key
+    # target_subject = "数学"
+    # for key in subject_count.keys():
+    #     if subject_count[key] > subject_count.get(target_subject,0):
+    #         target_subject = key
     
-    top_documents_idx = list(filter(lambda idx: df.at[idx,'subject']==target_subject ,top_documents_idx))[:top_count]
+    # top_documents_idx = list(filter(lambda idx: df.at[idx,'subject']==target_subject ,top_documents_idx))
+    # top_documents_idx = sorted(top_documents_idx, key= lambda idx: scores[idx],reverse=True)[:top_count]
 
     return top_documents_idx
 

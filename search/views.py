@@ -38,7 +38,7 @@ def query_info(request,query):
     return render(request,'search.html',context)
 
 def download(request,file_index):
-    filename = df.at[file_index,'file_name']
+    filename = df.at[file_index,'file_name'].replace('.txt','.doc')
     filepath = df.at[file_index,'file_path'].replace('.txt','.doc')
     filepath = filepath.replace(r"F:\Desktop\code\Other\Deloitte competition\tsearcher\tsearcher\\","")
     filepath = os.path.join(base_path,filepath)
@@ -49,7 +49,7 @@ def download(request,file_index):
 
 
 def file_iterator(file_name, chunk_size=1024):
-    with open(file_name,encoding="utf-8") as f:
+    with open(file_name,'rb') as f:
         while True:
             c = f.read(chunk_size)
             if c:
