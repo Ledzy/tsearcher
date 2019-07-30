@@ -32,69 +32,76 @@
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
 
-        <!-- Navbar Area -->
-        <div class="mag-main-menu" id="sticker">
-            <div class="classy-nav-container breakpoint-off">
-                <!-- Menu -->
-                <nav class="classy-navbar justify-content-between" id="magNav">
-
-                    <!-- Nav brand -->
-                    <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
-
-                    <!-- Navbar Toggler -->
-                    <div class="classy-navbar-toggler">
-                        <span class="navbarToggler"><span></span><span></span><span></span></span>
-                    </div>
-
-                    <!-- Nav Content -->
-                    <div class="nav-content d-flex align-items-center">
-                        <div class="classy-menu">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li class="active"><a href="index.html">主页</a></li>
-                                    <li><a href="archive.html">Archive</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="video-post.html">Single Video Post</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="contact.html">联系我们</a></li>
-                                            <li><a href="submit-video.html">上传教学资源</a></li>
-                                            <li><a href="login.html">登录</a></li>
-                                        </ul>
-                                    </li>
-                                    
-                                    <li><a href="about.html">关于</a></li>
-                                    <li><a href="contact.html">联系我们</a></li>
-                                </ul>
-                            </div>
-
-                        <div class="top-meta-data d-flex align-items-center">
-                            <!-- Top Search Area -->
-                            <div class="top-search-area">
-                                <form action="index.html" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Search and hit enter...">
-                                    <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
-                            <!-- Login -->
-                            <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
-                            <!-- Submit Video -->
-                            <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">Submit Video</span></a>
+            <!-- Navbar Area -->
+            <div class="mag-main-menu" id="sticker">
+                <div class="classy-nav-container breakpoint-off">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="magNav">
+    
+                        <!-- Nav brand -->
+                        <a href="#" class="nav-brand"><img src="{% static 'logo_v2.jpg' %}" style="height:70px; width:200px" alt=""></a>
+    
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
                         </div>
-                    </div>
-                </nav>
+    
+                        <!-- Nav Content -->
+                        <div class="nav-content d-flex align-items-center">
+                            <div class="classy-menu">
+    
+                                <!-- Close Button -->
+                                <div class="classycloseIcon">
+                                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                                </div>
+    
+                                <!-- Nav Start -->
+                                <div class="classynav">
+                                    <ul>
+                                        <li class="active"><a href="{% url 'home' %}">主页</a></li>
+                                        <li><a href="/blog">教学博客</a></li>
+                                        <li><a href="/contact_us">联系我们</a></li>
+                                        {% if user.is_authenticated %}
+                                        <li>欢迎您,{{user.username}}</li>
+                                        {% else %}
+                                        <li><a href="/login">登录</a></li>
+                                        {% endif %}
+                                        <!-- <li><a href="#">Pages</a>
+                                            <ul class="dropdown">
+                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="archive.html">Archive</a></li>
+                                                <li><a href="video-post.html">Single Video Post</a></li>
+                                                <li><a href="single-post.html">Single Post</a></li>
+                                                <li><a href="contact.html">联系我们</a></li>
+                                                <li><a href="submit-video.html">上传教学资源</a></li>
+                                                <li><a href="login.html">登录</a></li>
+                                            </ul>
+                                        </li> -->
+                                        
+                                        
+                                    </ul>
+                                </div>
+                                <!-- Nav End -->
+                            </div>
+    
+                            <div class="top-meta-data d-flex align-items-center">
+                                <!-- Top Search Area -->
+                                <!-- <div class="top-search-area">
+                                    <form action="index.html" method="post">
+                                        <input type="search" name="top-search" id="topSearch" placeholder="Search and hit enter...">
+                                        <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                    </form>
+                                </div> -->
+                                <!-- Login -->
+                                <a href="/login" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                <!-- Submit Video -->
+                                <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">提交作品</span></a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->
@@ -121,6 +128,8 @@
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> 首页</a></li>
                             <li class="breadcrumb-item active" aria-current="page">搜索</li>
                         </ol>
+                        <hr>
+                            
                     </nav>
                 </div>
             </div>
@@ -151,8 +160,14 @@
 
                         <!-- Team Member Area -->
                         <div class="section-heading mt-30">
+                            {% if is_teaching_plan %}
                             <h5>教案推荐</h5>
+                            {% else %}
+                            <h5>课件推荐</h5>
+                            {% endif %}
                         </div>
+
+                        
                         
                         <!-- Single Team Member -->
 
@@ -167,20 +182,22 @@
                         
                         {% for file in files %}
                         <div class="single-team-member d-flex align-items-center">
-                            <!-- <div class="team-member-thumbnail">
-                                <img src="img/bg-img/36.jpg" alt="">
-                                <div class="social-btn">
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                </div>
-                            </div> -->
                             <div class="team-member-content">
                                 <h6>{{file.filename}}</h6>
                                 <span>评分:{{file.star}}</span>
                                 <span>科目:{{file.subject.type_name}}</span>
+                                {% if is_teaching_plan %}
                                 <p>{{file.content|truncatechars:120}}</p>
-                                <div class="col-md-4"><a href="/search/download/{{file.index}}">下载(待装饰)</a></div>
+                                <div class="social-followers-info" style="width:18%">
+                                    <a href="/search/download/teaching_plan/{{file.index}}" class="youtube-subscribers"> 下载</a>
+                                </div>
+                                <!-- <div class="col-md-4"><a href="/search/download/teaching_plan/{{file.index}}">下载(待装饰)</a></div> -->
+                                {% else %}
+                                <div class="social-followers-info" style="width:18%">
+                                    <a href="/search/download/slide/{{file.index}}" class="youtube-subscribers"> 下载</a>
+                                </div>
+                                <!-- <div class="col-md-4"><a href="/search/download/slide/{{file.index}}">下载(待装饰)</a></div> -->
+                                {% endif %}
                             </div>
                         </div>
                         {% endfor %}
@@ -208,15 +225,14 @@
                         <!-- Sidebar Widget -->
                         <div class="single-sidebar-widget p-30">
                             <!-- Social Followers Info -->
-                            <div class="social-followers-info">
-                                <!-- Facebook -->
-                                <a href="#" class="facebook-fans"><i class="fa fa-facebook"></i> 4,360 <span>Fans</span></a>
-                                <!-- Twitter -->
-                                <a href="#" class="twitter-followers"><i class="fa fa-twitter"></i> 3,280 <span>Followers</span></a>
-                                <!-- YouTube -->
-                                <a href="#" class="youtube-subscribers"><i class="fa fa-youtube"></i> 1250 <span>Subscribers</span></a>
-                                <!-- Google -->
-                                <a href="#" class="google-followers"><i class="fa fa-google-plus"></i> 4,230 <span>Followers</span></a>
+                            <div class="social-followers-info" style="width:50%">
+                                {% if is_teaching_plan %}
+                                <a href="#" class="twitter-followers" > 教案</a>
+                                <a href="../slide/{{query}}" class="youtube-subscribers" > 课件</a>
+                                {% else %}
+                                <a href="../teaching_plan/{{query}}" class="twitter-followers" > 教案</a>
+                                <a href="#" class="youtube-subscribers" > 课件</a>
+                                {% endif %}
                             </div>
                         </div>
 

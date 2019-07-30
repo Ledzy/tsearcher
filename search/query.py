@@ -26,6 +26,27 @@ class Document_idx():
         self.count = 0
         self.pos = []
 
+def get_slides(query, index, df, top_count=10):
+    query = seg_sentence(query).strip(" ")
+    query_words = jieba.lcut(query,cut_all=True)
+    slide_count = df.shape[0]
+    scores = {}
+    print(query_words)
+    for slide_idx in range(slide_count):
+        score = 0
+        name_words = jieba.lcut(df.at[slide_idx,'file_name'],cut_all=False)
+        for word in query_words:
+            if word in name_words: 
+                # print(name_words)
+                score += 1
+        scores[slide_idx] = score
+    
+    ordered_scores = sorted(scores.items(), key=lambda item: item[1], reverse=True)
+    ordered_scores = list(filter(lambda item: item[1]!=0,ordered_scores))[:top_count]
+    print(ordered_scores)
+    file_idx = list(zip(*ordered_scores))[0]
+
+    return file_idx
 
 
 def get_index(df):
@@ -33,8 +54,8 @@ def get_index(df):
     for i,row in df.iterrows():
         filename = row['file_name']
         text = row['text']
-        name_words = list(jieba.cut(filename, cut_all=True, HMM=True))
-        document_words = list(jieba.cut(text, cut_all=True, HMM=True))
+        name_words = list(jieba.cut(filename, cut_all=False, HMM=True))
+        document_words = list(jieba.cut(text, cut_all=False, HMM=True))
         for word in name_words:
             if word in index:
                 index[word].filename_idx.append(i)
@@ -73,7 +94,7 @@ def BM25_one_word(word,document_idx,index,df,avg_document_len,document_count,qtf
     return score
     
 def BM25(sentence,document_idx,index,df,avg_document_len,document_count):
-    seg_list = jieba.lcut(sentence,cut_all=False)
+    seg_list = jieba.lcut(sentence,cut_all=True)
     score = 0
     for word in seg_list:
         score += BM25_one_word(word,document_idx,index,df,avg_document_len,document_count)
@@ -124,9 +145,12 @@ def seg_sentence(sentence):
 stopwords = stopwordslist('stopwords.txt')  # 这里加载停用词的路径  
 
 if __name__ == "__main__":
-    query = "传感器是如何工作的"
-    df = pd.read_csv('teaching_outline.csv')
-    document_count = df.shape[0]
-    avg_document_len = df['text'].str.len().mean()
+    query = "必修"
+    df = pd.read_csv('slides.csv')
+    # document_count = df.shape[0]
+    # avg_document_len = df['text'].str.len().mean()
     index = get_index(df)
-    print(get_documents(query,index,document_count,df,avg_document_len))
+    # print(get_documents(query,index,document_count,df,avg_document_len))
+    file_idx = get_slides(query,index,df)
+    for i in file_idx:
+        print(df.at[i,'file_name'])

@@ -504,73 +504,72 @@
          Post Right Sidebar Area
         <<<<<<<<<<<<<<<<<<<<< -->
 
-
             <!-- Sidebar Widget -->
             <div class="single-sidebar-widget p-30">
-                <!-- Section Title -->
-                <div class="section-heading">
-                    <h5>知名讲师</h5>
+                    <!-- Section Title -->
+                    <div class="section-heading">
+                        <h5>知名讲师</h5>
+                    </div>
+    
+                    <!-- Single YouTube Channel -->
+                    <div class="single-youtube-channel d-flex">
+                        <div class="youtube-channel-thumbnail">
+                            <img src="{% static 'img/bg-img/14.jpg'  %}" alt="">
+                        </div>
+                        <div class="youtube-channel-content">
+                            <a href="single-post.html" class="channel-title">上海高中老陈</a>
+                            <a href="#" class="btn subscribe-btn"> 关注</a>
+                        </div>
+                    </div>
+    
+                    <!-- Single YouTube Channel -->
+                    <div class="single-youtube-channel d-flex">
+                        <div class="youtube-channel-thumbnail">
+                            <img src="{% static 'img/bg-img/15.jpg'  %}" alt="">
+                        </div>
+                        <div class="youtube-channel-content">
+                            <a href="single-post.html" class="channel-title">雅礼李老师</a>
+                            <a href="#" class="btn subscribe-btn"> 关注</a>
+                        </div>
+                    </div>
+    
+                    <!-- Single YouTube Channel -->
+                    <div class="single-youtube-channel d-flex">
+                        <div class="youtube-channel-thumbnail">
+                            <img src="{% static 'img/bg-img/16.jpg'  %}" alt="">
+                        </div>
+                        <div class="youtube-channel-content">
+                            <a href="single-post.html" class="channel-title">CiciChen</a>
+                            <a href="#" class="btn subscribe-btn"> 关注</a>
+                        </div>
+                    </div>
+    
+                    <!-- Single YouTube Channel -->
+                    <div class="single-youtube-channel d-flex">
+                        <div class="youtube-channel-thumbnail">
+                            <img src="{% static 'img/bg-img/17.jpg'  %}" alt="">
+                        </div>
+                        <div class="youtube-channel-content">
+                            <a href="single-post.html" class="channel-title">王后雄</a>
+                            <a href="#" class="btn subscribe-btn"> 关注</a>
+                        </div>
+                    </div>
+    
+                    <!-- Single YouTube Channel -->
+                    <div class="single-youtube-channel d-flex">
+                        <div class="youtube-channel-thumbnail">
+                            <img src="{% static 'img/bg-img/18.jpg'  %}" alt="">
+                        </div>
+                        <div class="youtube-channel-content">
+                            <a href="single-post.html" class="channel-title">葛军</a>
+                            <a href="#" class="btn subscribe-btn"> 关注</a>
+                        </div>
+                    </div>
+    
                 </div>
-
-                <!-- Single YouTube Channel -->
-                <div class="single-youtube-channel d-flex">
-                    <div class="youtube-channel-thumbnail">
-                        <img src="{% static 'img/bg-img/14.jpg'  %}" alt="">
-                    </div>
-                    <div class="youtube-channel-content">
-                        <a href="single-post.html" class="channel-title">上海高中老陈</a>
-                        <a href="#" class="btn subscribe-btn"> 关注</a>
-                    </div>
-                </div>
-
-                <!-- Single YouTube Channel -->
-                <div class="single-youtube-channel d-flex">
-                    <div class="youtube-channel-thumbnail">
-                        <img src="{% static 'img/bg-img/15.jpg'  %}" alt="">
-                    </div>
-                    <div class="youtube-channel-content">
-                        <a href="single-post.html" class="channel-title">雅礼李老师</a>
-                        <a href="#" class="btn subscribe-btn"> 关注</a>
-                    </div>
-                </div>
-
-                <!-- Single YouTube Channel -->
-                <div class="single-youtube-channel d-flex">
-                    <div class="youtube-channel-thumbnail">
-                        <img src="{% static 'img/bg-img/16.jpg'  %}" alt="">
-                    </div>
-                    <div class="youtube-channel-content">
-                        <a href="single-post.html" class="channel-title">CiciChen</a>
-                        <a href="#" class="btn subscribe-btn"> 关注</a>
-                    </div>
-                </div>
-
-                <!-- Single YouTube Channel -->
-                <div class="single-youtube-channel d-flex">
-                    <div class="youtube-channel-thumbnail">
-                        <img src="{% static 'img/bg-img/17.jpg'  %}" alt="">
-                    </div>
-                    <div class="youtube-channel-content">
-                        <a href="single-post.html" class="channel-title">王后雄</a>
-                        <a href="#" class="btn subscribe-btn"> 关注</a>
-                    </div>
-                </div>
-
-                <!-- Single YouTube Channel -->
-                <div class="single-youtube-channel d-flex">
-                    <div class="youtube-channel-thumbnail">
-                        <img src="{% static 'img/bg-img/18.jpg'  %}" alt="">
-                    </div>
-                    <div class="youtube-channel-content">
-                        <a href="single-post.html" class="channel-title">葛军</a>
-                        <a href="#" class="btn subscribe-btn"> 关注</a>
-                    </div>
-                </div>
-
+    
+    
             </div>
-
-
-        </div>
     </section>
     <!-- ##### Mag Posts Area End ##### -->
 
@@ -641,7 +640,7 @@
         function getText(){
             var text = document.getElementsByClassName('search_input')[0].value
             console.log(text)
-            window.location.href='search/'+text
+            window.location.href='search/teaching_plan/'+text
             return text
         }
     </script>
