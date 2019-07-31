@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import search_page, query_teaching_plan, download_plan, query_slide, download_slide
+from .views import query_subject_plan, query_subject_slide
 
 app_name = 'search'
 
@@ -9,4 +10,6 @@ urlpatterns = [
     path('download/slide/<int:file_index>',download_slide, name="download_plan"),
     path('teaching_plan/<str:query>', query_teaching_plan, name="query_teaching_plan"),
     path('slide/<str:query>', query_slide, name="query_slide"),
+    path('teaching_plan/subject/<str:subject_name>', query_subject_plan, name='query_subject_plan'),
+    path('slide/subject/<str:subject_name>', query_subject_slide, name='query_subject_slide'),
 ]

@@ -6,15 +6,18 @@ import random
 
 User = get_user_model()
 blog_display = 5
-
+user_display = 6
 
 def index(request):
     context = {}
     user = request.user
-    newest_blogs = Blog.objects.order_by('created_time')[:blog_display]
-    context['user'] = user
+    newest_blogs = Blog.objects.order_by('-created_time')[:blog_display]
+    hotest_blogs = Blog.objects.order_by('-created_time')[:blog_display] 
+
+    context['request_user'] = user
+    context['ue'] = UserExtension.objects.all()[:user_display]
+    context['hotest_blogs'] = hotest_blogs
     context['newest_blogs'] = newest_blogs
-    context['read_count'] = random.randint(50,150) #先随机代替吧
     return render(request,'index.html',context)
 
 def about(request):

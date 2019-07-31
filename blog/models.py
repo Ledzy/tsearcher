@@ -17,7 +17,8 @@ class Blog(models.Model, ReadNumExpandMethod):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     read_details = GenericRelation(ReadDetail)
     created_time = models.DateTimeField(auto_now_add=True)
-    last_updated_time = models.DateTimeField(auto_now=True)    
+    last_updated_time = models.DateTimeField(auto_now=True)
+    blog_img = models.ImageField(null=True)  
 
     def __str__(self):
         return "<Blog: %s>" % self.title

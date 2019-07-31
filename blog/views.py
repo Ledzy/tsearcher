@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.db.models import Count
@@ -74,3 +74,16 @@ def blog_detail(request, blog_pk):
     response = render(request, 'blog_detail.html', context) # 响应
     response.set_cookie(read_cookie_key, 'true') # 阅读cookie标记
     return response
+
+def upload(request):
+    if not request.user.is_authenticated:
+        return redirect('home')
+
+    if request.POST:
+        title = request.POST.get("title")
+        type_ = request.POST.get("type")
+        content = request.POST.get("content")
+
+        print(title)
+
+    return render(request,'blog_upload.html')

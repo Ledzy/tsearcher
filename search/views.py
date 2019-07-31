@@ -14,9 +14,15 @@ avg_document_len = plan_df['text'].str.len().mean()
 index = get_index(plan_df)
 # base_path = os.path.abspath(os.path.join(os.getcwd(), ".."))
 base_path = os.getcwd()
-
 slide_df = pd.read_csv('slides.csv')
 index_slide = get_index(slide_df)
+
+top_count = 10
+#更新科目计数
+for subject in Subject.objects.all():
+    subject_name = subject.type_name
+    subject.slide_count = slide_df['subject'].value_counts().get(subject_name,0)
+    subject.plan_count = plan_df['subject'].value_counts().get(subject_name,0)
 
 
 # if os.name!='nt':
@@ -42,6 +48,7 @@ def query_teaching_plan(request,query):
         plan = TeachingPlan.objects.create(index=i,content=content,star=star,filename=filename,subject=subject_model)
         files.append(plan)
     
+    context['subjects'] = Subject.objects.all()
     context['query'] = query
     context['files'] = files
     context['is_teaching_plan'] = True
@@ -62,6 +69,7 @@ def query_slide(request,query):
         slide = Slides.objects.create(index=i,star=star,filename=filename,subject=subject_model)
         files.append(slide)
     
+    context['subjects'] = Subject.objects.all()
     context['query'] = query
     context['files'] = files
     context['is_teaching_plan'] = False
@@ -75,9 +83,9 @@ def download_plan(request,file_index):
     filepath = filepath.replace(strip_path,"")[1:]
 
     if os.name != 'nt':
-        filepath.replace('\\','/')
+        filepath = filepath.replace('\\','/')
 
-    filepath = os.path.join(base_path,filepath) 
+    filepath = os.path.join(base_path,filepath)
     response = StreamingHttpResponse(file_iterator(filepath))
     response['Content-Type']='application/octet-stream'
     response['Content-Disposition']= "attachment; filename*=utf-8''{}".format(escape_uri_path(filename))
@@ -90,7 +98,7 @@ def download_slide(request,file_index):
     filepath = filepath.replace(strip_path,"")[1:]
     
     if os.name != 'nt':
-        filepath.replace('\\','/')
+        filepath = filepath.replace('\\','/')
     
     filepath = os.path.join(base_path,filepath)
     response = StreamingHttpResponse(file_iterator(filepath))
@@ -98,6 +106,49 @@ def download_slide(request,file_index):
     response['Content-Disposition']= "attachment; filename*=utf-8''{}".format(escape_uri_path(filename))
     return response
 
+def query_subject_plan(request,subject_name):
+    context = {}
+    # document_idx = get_documents(query,index,document_count,plan_df,avg_document_len)
+    document_idx = plan_df.loc[plan_df.subject==subject_name].index[:top_count]
+    files = []
+
+    for i in document_idx:
+        filename = plan_df.at[i,'file_name'].strip('.txt')
+        content = plan_df.at[i,'text']
+        subject = plan_df.at[i,'subject']
+        star = random.randint(20,50)/10
+        subject_model = Subject.objects.filter(type_name=subject)[0]
+
+        TeachingPlan.objects.filter(index=i).delete()
+        plan = TeachingPlan.objects.create(index=i,content=content,star=star,filename=filename,subject=subject_model)
+        files.append(plan)
+
+    context['subjects'] = Subject.objects.all()
+    context['files'] = files
+    context['is_teaching_plan'] = True
+    return render(request,'search.html',context)
+
+
+def query_subject_slide(request,subject_name):
+    context = {}
+    # slide_idx = get_slides(query,index_slide,slide_df)
+    slide_idx = slide_df.loc[slide_df.subject==subject_name].index[:top_count]
+    files = []
+
+    for i in slide_idx:
+        filename = slide_df.at[i,'file_name'].strip('.ppt')
+        subject = slide_df.at[i,'subject']
+        star = random.randint(20,50)/10
+        subject_model = Subject.objects.filter(type_name=subject)[0]
+
+        Slides.objects.filter(index=i).delete()
+        slide = Slides.objects.create(index=i,star=star,filename=filename,subject=subject_model)
+        files.append(slide)
+    
+    context['subjects'] = Subject.objects.all()
+    context['files'] = files
+    context['is_teaching_plan'] = False
+    return render(request,'search.html',context)
 
 
 def file_iterator(file_name, chunk_size=1024):

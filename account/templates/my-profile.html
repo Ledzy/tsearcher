@@ -57,6 +57,7 @@
 <header class="main-header header-2 fixed-header">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="/">
             <img src="{% static 'logo_v2.jpg' %}" style="height:80px; width: 180px" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,7 +111,7 @@
                             </div>
                         </li>
                         <li>
-                            <a class="btn btn-theme btn-md" href="submit-property.html">Submit property</a>
+                            <a class="btn btn-theme btn-md" href="submit-property.html">提交信息</a>
                         </li>
                     </ul>
                 </div>
@@ -127,23 +128,11 @@
             <div class="col-lg-3 col-md-12 col-sm-12 col-pad">
                 <div class="dashboard-nav d-none d-xl-block d-lg-block">
                     <div class="dashboard-inner">
-                        <h4>Main</h4>
+
+                        <h4>账户</h4>
                         <ul>
-                            <li><a href="dashboard.html"><i class="flaticon-dashboard"></i> Dashboard</a></li>
-                            <li><a href="messages.html"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
-                            <li><a href="bookings.html"><i class="flaticon-calendar"></i> Bookings</a></li>
-                        </ul>
-                        <h4>Listings</h4>
-                        <ul>
-                            <li><a href="my-properties.html"><i class="flaticon-apartment-1"></i>My Properties</a></li>
-                            <li><a href="my-invoices.html"><i class="flaticon-bill"></i>My Invoices</a></li>
-                            <li><a href="favorited-properties.html"><i class="flaticon-heart"></i>Favorited Properties</a></li>
-                            <li><a href="submit-property.html"><i class="flaticon-plus"></i>Submit Property</a></li>
-                        </ul>
-                        <h4>Account</h4>
-                        <ul>
-                            <li class="active"><a href="my-profile.html"><i class="flaticon-people"></i>My Profile</a></li>
-                            <li><a href="/account/logout"><i class="flaticon-logout"></i>Logout</a></li>
+                            <li class="active"><a href="my-profile.html"><i class="flaticon-people"></i>个人页面</a></li>
+                            <li><a href="/account/logout"><i class="flaticon-logout"></i>登出</a></li>
                         </ul>
                     </div>
                 </div>
@@ -153,18 +142,18 @@
                     <div class="dashboard-content">
                         <div class="dashboard-header clearfix">
                             <div class="row">
-                                <div class="col-sm-12 col-md-6"><h4>My Profile 这个页面暂时只有log out可以点，头像可以在admin上传</h4></div>
+                                <div class="col-sm-12 col-md-6"><h4>我的主页</h4></div>
                                 <div class="col-sm-12 col-md-6">
                                     <div class="breadcrumb-nav">
                                         <ul>
-                                            <li class="active">My Profile</li>
+                                            <!-- <li class="active">My Profile</li> -->
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="dashboard-list">
-                            <h3 class="heading">Profile Details</h3>
+                            <h3 class="heading"></h3>
                             <div class="dashboard-message contact-2 bdr clearfix">
                                 <div class="row">
                                     <div class="col-lg-3 col-md-3">
@@ -213,84 +202,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="dashboard-list">
-                                    <h3 class="heading">Change Password</h3>
-                                    <div class="dashboard-message contact-2">
-                                        <form action="#" method="GET" enctype="multipart/form-data">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="form-group name">
-                                                        <label>Current Password</label>
-                                                        <input type="password" name="current-password" class="form-control" placeholder="Current Password">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-group email">
-                                                        <label>New Password</label>
-                                                        <input type="password" name="new-password" class="form-control" placeholder="New Password">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-group subject">
-                                                        <label>Confirm New Password</label>
-                                                        <input type="password" name="confirm-new-password" class="form-control" placeholder="Confirm New Password">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="send-btn">
-                                                        <button type="submit" class="btn btn-md button-theme">Change Password</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="dashboard-list">
-                                    <h3 class="heading">Socials</h3>
-                                    <div class="dashboard-message contact-2">
-                                        <form action="#" method="GET" enctype="multipart/form-data">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="form-group name">
-                                                        <label>Facebook</label>
-                                                        <input type="text" name="facebook" class="form-control" placeholder="https://www.facebook.com">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-group email">
-                                                        <label>Twitter</label>
-                                                        <input type="text" name="twitter" class="form-control" placeholder="https://twitter.com">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-group subject">
-                                                        <label>Vkontakte</label>
-                                                        <input type="text" name="vkontakte" class="form-control" placeholder="vk.com">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-group number">
-                                                        <label>Whatsapp</label>
-                                                        <input type="email" name="whatsapp" class="form-control" placeholder="https://www.whatsapp.com">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="send-btn">
-                                                        <button type="submit" class="btn btn-md button-theme">Send Changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
+
                     </div>
-                    <p class="sub-banner-2 text-center">© 2018 Theme Vessel. Trademarks and brands are the property of their respective owners.</p>
+                    
                 </div>
             </div>
         </div>

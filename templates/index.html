@@ -66,8 +66,8 @@
                                     <li class="active"><a href="{% url 'home' %}">主页</a></li>
                                     <li><a href="/blog">教学博客</a></li>
                                     <li><a href="/contact_us">联系我们</a></li>
-                                    {% if user.is_authenticated %}
-                                    <li>欢迎您,{{user.username}}</li>
+                                    {% if request_user.is_authenticated %}
+                                    <li>欢迎您,{{request_user.username}}</li>
                                     {% else %}
                                     <li><a href="/login">登录</a></li>
                                     {% endif %}
@@ -150,66 +150,27 @@
                     <h5>最热博文</h5>
                 </div>
 
+                {% for blog in hotest_blogs %}
+                    {% get_comment_count blog as comment_count %}
+                    {% get_like_count blog as like_count %}
 
                 <!-- Single Blog Post -->
                 <div class="single-blog-post d-flex">
                     <div class="post-thumbnail">
-                        <img src="{% static 'img/bg-img/5.jpg'  %}" alt="">
+                        <img src="{% static 'img/bg-img/4.jpg'  %}" alt=""> 
                     </div>
                     <div class="post-content">
-                        <a href="single-post.html" class="post-title">新鲜是新手教师的好帮手</a>
+                        <a href="{% url 'blog_detail' blog.pk %}" class="post-title">{{blog.title}}</a>
                         <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 429</a>
-                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 84</a>
-                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 14</a>
+                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i>{{blog.get_read_num}}</a>
+                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>{{like_count}} </a>
+                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex">
-                    <div class="post-thumbnail">
-                        <img src="{% static 'img/bg-img/6.jpg'  %}" alt="">
-                    </div>
-                    <div class="post-content">
-                        <a href="single-post.html" class="post-title">让孩子学会爱</a>
-                        <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 386</a>
-                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 64</a>
-                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 8</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex">
-                    <div class="post-thumbnail">
-                        <img src="{% static 'img/bg-img/7.jpg'  %}" alt="">
-                    </div>
-                    <div class="post-content">
-                        <a href="single-post.html" class="post-title">对“课后解决”的思考</a>
-                        <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 324</a>
-                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 73</a>
-                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 14</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex">
-                    <div class="post-thumbnail">
-                        <img src="{% static 'img/bg-img/8.jpg'  %}" alt="">
-                    </div>
-                    <div class="post-content">
-                        <a href="single-post.html" class="post-title">高一语文教学反思</a>
-                        <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 299</a>
-                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 54</a>
-                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 8</a>
-                        </div>
-                    </div>
-                </div>
+                {% empty %}
+                {% endfor %}
+                
             </div>
 
             <!-- Sidebar Widget -->
@@ -229,9 +190,9 @@
                         <img src="{% static 'img/bg-img/4.jpg'  %}" alt=""> 
                     </div>
                     <div class="post-content">
-                        <a href="/blog/4" class="post-title">{{blog.title}}</a>
+                        <a href="{% url 'blog_detail' blog.pk %}" class="post-title">{{blog.title}}</a>
                         <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i>{{read_count}}</a>
+                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i>{{blog.get_read_num}}</a>
                             <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>{{like_count}} </a>
                             <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} </a>
                         </div>
@@ -239,21 +200,6 @@
                 </div>
                 {% empty %}
                 {% endfor %}
-
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex">
-                    <div class="post-thumbnail">
-                        <img src="{% static 'img/bg-img/9.jpg'  %}" alt="">
-                    </div>
-                    <div class="post-content">
-                        <a href="single-post.html" class="post-title">内容要讲到点子上</a>
-                        <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 18</a>
-                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 4</a>
-                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 1</a>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -474,61 +420,20 @@
                     <div class="section-heading">
                         <h5>知名讲师</h5>
                     </div>
+                    {% for user in ue %}
+
     
                     <!-- Single YouTube Channel -->
                     <div class="single-youtube-channel d-flex">
                         <div class="youtube-channel-thumbnail">
-                            <img src="{% static 'img/bg-img/14.jpg'  %}" alt="">
+                            <img src="{{user.portrait.url}}" alt="">
                         </div>
                         <div class="youtube-channel-content">
-                            <a href="single-post.html" class="channel-title">上海高中老陈</a>
+                            <a href="single-post.html" class="channel-title">{{user.user.username}}</a>
                             <a href="#" class="btn subscribe-btn"> 关注</a>
                         </div>
                     </div>
-    
-                    <!-- Single YouTube Channel -->
-                    <div class="single-youtube-channel d-flex">
-                        <div class="youtube-channel-thumbnail">
-                            <img src="{% static 'img/bg-img/15.jpg'  %}" alt="">
-                        </div>
-                        <div class="youtube-channel-content">
-                            <a href="single-post.html" class="channel-title">雅礼李老师</a>
-                            <a href="#" class="btn subscribe-btn"> 关注</a>
-                        </div>
-                    </div>
-    
-                    <!-- Single YouTube Channel -->
-                    <div class="single-youtube-channel d-flex">
-                        <div class="youtube-channel-thumbnail">
-                            <img src="{% static 'img/bg-img/16.jpg'  %}" alt="">
-                        </div>
-                        <div class="youtube-channel-content">
-                            <a href="single-post.html" class="channel-title">CiciChen</a>
-                            <a href="#" class="btn subscribe-btn"> 关注</a>
-                        </div>
-                    </div>
-    
-                    <!-- Single YouTube Channel -->
-                    <div class="single-youtube-channel d-flex">
-                        <div class="youtube-channel-thumbnail">
-                            <img src="{% static 'img/bg-img/17.jpg'  %}" alt="">
-                        </div>
-                        <div class="youtube-channel-content">
-                            <a href="single-post.html" class="channel-title">王后雄</a>
-                            <a href="#" class="btn subscribe-btn"> 关注</a>
-                        </div>
-                    </div>
-    
-                    <!-- Single YouTube Channel -->
-                    <div class="single-youtube-channel d-flex">
-                        <div class="youtube-channel-thumbnail">
-                            <img src="{% static 'img/bg-img/18.jpg'  %}" alt="">
-                        </div>
-                        <div class="youtube-channel-content">
-                            <a href="single-post.html" class="channel-title">葛军</a>
-                            <a href="#" class="btn subscribe-btn"> 关注</a>
-                        </div>
-                    </div>
+                    {% endfor %}
     
                 </div>
     

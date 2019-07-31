@@ -39,7 +39,7 @@
                     <nav class="classy-navbar justify-content-between" id="magNav">
     
                         <!-- Nav brand -->
-                        <a href="#" class="nav-brand"><img src="{% static 'logo_v2.jpg' %}" style="height:70px; width:200px" alt=""></a>
+                        <a href="/" class="nav-brand"><img src="{% static 'logo_v2.jpg' %}" style="height:70px; width:200px" alt=""></a>
     
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -152,7 +152,7 @@
                         </div>
 
                         <div class="contact-information mb-30">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur mauris id scelerisque eleifend. Nunc vestibulum cursus quam at scelerisque. Aliquam quis varius orci, vel tincidunt est. Proin ac tincidunti, atmots interdum erat. Maecenas neque lorem, aliquet in tempus non, efficitur ac neque.</p>
+                            <p>我们是Tsearcher团队，致力于为老师打造一流的信息交流平台。</p>
 
                             <!-- Single Contact Info -->
                             <div class="single-contact-info d-flex align-items-center">
@@ -160,8 +160,8 @@
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </div>
                                 <div class="text">
-                                    <p>Our Office:</p>
-                                    <h6>5520 Quebec Place, Brooklyn, NY , USA 10000</h6>
+                                    <p>地址:</p>
+                                    <h6>深圳市龙岗区龙翔大道2001号香港中文大学（深圳）</h6>
                                 </div>
                             </div>
 
@@ -171,8 +171,8 @@
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                 </div>
                                 <div class="text">
-                                    <p>Email:</p>
-                                    <h6>infodeercreative@gmail.com</h6>
+                                    <p>邮箱:</p>
+                                    <h6>qijunluo@link.cuhk.edu.cn</h6>
                                 </div>
                             </div>
 
@@ -182,38 +182,38 @@
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                 </div>
                                 <div class="text">
-                                    <p>Phone:</p>
-                                    <h6>(+88) 012-3455-0028</h6>
+                                    <p>电话号码:</p>
+                                    <h6>(+86) 012-3455-0028</h6>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Section Title -->
                         <div class="section-heading">
-                            <h5>GET IN TOUCH</h5>
+                            <h5>联系我们</h5>
                         </div>
-
                         <!-- Contact Form Area -->
-                        <div class="contact-form-area">
-                            <form action="#" method="post">
+                        <div class="contact-form-area" action='contact'>
+                            <form action="#" >
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="name" placeholder="Name">
+                                            <input type="text" class="form-control" id="name" placeholder="姓名">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" id="email" placeholder="E-mail">
+                                            <input type="email" class="form-control" id="email" placeholder="邮箱">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="请输入您的问题"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn mag-btn mt-30" type="submit">Send</button>
+                                        <button class="btn mag-btn mt-30" type="submit" onclick="alert('we have received your message, thanks for contacting us')">提交</button>
                                     </div>
                                 </div>
                             </form>
@@ -275,7 +275,7 @@
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style-2 d-flex">
                             <div class="post-thumbnail">
-                                <img src="img/bg-img/12.jpg" alt="">
+                                <img src="{% static 'img/bg-img/12.jpg' %}" alt="">
                             </div>
                             <div class="post-content">
                                 <a href="single-post.html" class="post-title">Take A Romantic Break In A Boutique Hotel</a>

@@ -26,12 +26,18 @@ class Document_idx():
         self.count = 0
         self.pos = []
 
-def get_slides(query, index, df, top_count=10):
+def get_slides(query, index, df, top_count=10, subject=None):
+    if subject is not None:
+        file_idx = df.loc[df.subject==subject].index
+        if file_idx is not None:
+            return file_idx
+        else:
+            return []
+
     query = seg_sentence(query).strip(" ")
     query_words = jieba.lcut(query,cut_all=True)
     slide_count = df.shape[0]
     scores = {}
-    print(query_words)
     for slide_idx in range(slide_count):
         score = 0
         name_words = jieba.lcut(df.at[slide_idx,'file_name'],cut_all=False)
@@ -44,7 +50,7 @@ def get_slides(query, index, df, top_count=10):
     ordered_scores = sorted(scores.items(), key=lambda item: item[1], reverse=True)
     ordered_scores = list(filter(lambda item: item[1]!=0,ordered_scores))[:top_count]
     print(ordered_scores)
-    file_idx = list(zip(*ordered_scores))[0]
+    file_idx = list(zip(*ordered_scores))[0] if len(ordered_scores)!=0 else []
 
     return file_idx
 
@@ -100,12 +106,17 @@ def BM25(sentence,document_idx,index,df,avg_document_len,document_count):
         score += BM25_one_word(word,document_idx,index,df,avg_document_len,document_count)
     return score
 
-def get_documents(sentence,index,document_count,df,avg_document_len,top_count=10):
+def get_documents(sentence,index,document_count,df,avg_document_len,top_count=10,subject=None):
     scores = {}
     sentence = seg_sentence(sentence)
 
-    for document_idx in range(document_count):
-        scores[document_idx] = BM25(sentence,document_idx,index,df,avg_document_len,document_count)
+    if subject is not None:
+        target_indices = df.loc[df.subject==subject].index
+        for document_idx in target_indices:
+            scores[document_idx] = BM25(sentence,document_idx,index,df,avg_document_len,document_count)
+    else:
+        for document_idx in range(document_count):
+            scores[document_idx] = BM25(sentence,document_idx,index,df,avg_document_len,document_count)
 
     ordered_scores = sorted(scores.items(),key=lambda x: x[1], reverse=True)[:top_count]
     

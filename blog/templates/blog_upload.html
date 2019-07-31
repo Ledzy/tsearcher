@@ -38,7 +38,7 @@
                 <nav class="classy-navbar justify-content-between" id="magNav">
 
                     <!-- Nav brand -->
-                    <a href="#" class="nav-brand"><img src="{% static 'logo_v2.jpg' %}" style="height:70px; width:200px" alt=""></a>
+                    <a href="/" class="nav-brand"><img src="{% static 'logo_v2.jpg' %}" style="height:70px; width:200px" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -145,12 +145,12 @@
 
                         <!-- Single Catagory Post -->
                         <div class="single-catagory-post d-flex flex-wrap">
-                            <form>
+                            <form action='upload' method="POST" id="upload_blog" name="upload_blog">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label> 文章标题 </label>
-                                            <input type="text" class="form-control" id="name" placeholder="输入文章标题">
+                                            <input type="text" name="title" class="form-control" id="name" placeholder="输入文章标题">
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">文章分类</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <select class="form-control" id="exampleFormControlSelect1" name="type">
                                               <option>添加新分类...</option>
                                               <option>教学心得</option>
                                               <option>校园故事</option>
@@ -172,7 +172,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <textarea name="editor1" id="editor1" rows="10" cols="80">
-                                            与大家分享你的新鲜事...
+                                        
                                         </textarea>
                                         <script>
                                             // Replace the <textarea id="editor1"> with a CKEditor
@@ -181,11 +181,11 @@
                                         </script>
                                     </div>
                                     <div class="col-12">
-                                            <button class="btn mag-btn mt-30" type="submit">保存草稿</button>
-                                            <button class="btn mag-btn mt-30" type="submit">发表</button>
-
+                                            <!-- <button class="btn mag-btn mt-30" type="submit">保存草稿</button> -->
+                                        <a onClick="CKupdate();$('#upload_blog').ajaxSubmit();" class="btn mag-btn mt-30">发表</a>
+                            </form>
                                     </div>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -252,16 +252,24 @@
 
     <!-- ##### All Javascript Script ##### -->
     {% block script_extends %}{% endblock %}
+    <script>
+    function CKupdate(){
+        console.log('here')
+        for ( instance in CKEDITOR.instances )
+            CKEDITOR.instances[instance].updateElement();
+    }
+    </script>
+
     <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
     <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
     <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
     <!-- Active js -->
-    <script src="js/active.js"></script>
+    <script src="{% static 'js/active.js' %}"></script>
 </body>
 
 </html>

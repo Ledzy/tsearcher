@@ -200,6 +200,12 @@
                                 {% endif %}
                             </div>
                         </div>
+                        {% empty %}
+                        <div class="single-team-member d-flex align-items-center">
+                            <div class="team-member-content">
+                                <h6>暂无相关课件</h6>
+                            </div>
+                        </div>
                         {% endfor %}
                         
                         <!-- Single Team Member -->
@@ -245,13 +251,13 @@
 
                             <!-- Catagory Widget -->
                             <ul class="catagory-widgets">
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Life Style</span> <span>35</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Travel</span> <span>30</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Foods</span> <span>13</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Game</span> <span>06</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Sports</span> <span>28</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Football</span> <span>08</span></a></li>
-                                <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> TV Show</span> <span>13</span></a></li>
+                                {% for subject in subjects %}
+                                {% if is_teaching_plan %}
+                                <li><a href="subject/{{subject.type_name}}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{subject.type_name}}</span> <span>{{subject.plan_count}}</span></a></li>
+                                {% else %}
+                                <li><a href="subject/{{subject.type_name}}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{subject.type_name}}</span> <span>{{subject.slide_count}}</span></a></li>
+                                {% endif %}
+                                {% endfor %}
                             </ul>
                         </div>
 
@@ -260,22 +266,7 @@
                             <a href="#" class="add-img"><img src="img/bg-img/add2.png" alt=""></a>
                         </div>
 
-                        <!-- Sidebar Widget -->
-                        <div class="single-sidebar-widget p-30">
-                            <!-- Section Title -->
-                            <div class="section-heading">
-                                <h5>Newsletter</h5>
-                            </div>
-
-                            <div class="newsletter-form">
-                                <p>Subscribe our newsletter gor get notification about new updates, information discount, etc.</p>
-                                <form action="#" method="get">
-                                    <input type="search" name="widget-search" placeholder="Enter your email">
-                                    <button type="submit" class="btn mag-btn w-100">Subscribe</button>
-                                </form>
-                            </div>
-
-                        </div>
+                        
                     </div>
                 </div>
             </div>

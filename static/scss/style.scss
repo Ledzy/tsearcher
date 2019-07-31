@@ -433,7 +433,7 @@ input:focus {
                     a {
                         font-weight: 500;
                         text-transform: uppercase;
-                        font-size: 13px;
+                        font-size: 15px;
                         letter-spacing: 1px;
                         @media #{$breakpoint-lg} {
                             padding: 0 5px;
@@ -574,7 +574,7 @@ input:focus {
             height: 70px;
             background-color: $pri-color;
             line-height: 70px;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 500;
             color: $white-color;
             letter-spacing: 1px;
@@ -664,7 +664,7 @@ input:focus {
                 position: relative;
                 z-index: 1;
                 display: inline-block;
-                font-size: 13px;
+                font-size: 15px;
                 font-weight: 500;
                 letter-spacing: 2px;
                 text-transform: uppercase;
@@ -941,7 +941,7 @@ input:focus {
                 font-size: 14px;
                 color: $text-color;
                 @media #{$breakpoint-xs} {
-                    font-size: 13px;
+                    font-size: 15px;
                 }
                 @media #{$breakpoint-xs-landscape} {
                     font-size: 14px;
@@ -1076,7 +1076,7 @@ input:focus {
             }
             .video-duration {
                 background-color: #252324;
-                font-size: 13px;
+                font-size: 15px;
                 color: $white-color;
                 line-height: 1;
                 text-align: center;
@@ -1417,7 +1417,7 @@ input:focus {
                 position: relative;
                 z-index: 1;
                 display: inline-block;
-                font-size: 13px;
+                font-size: 15px;
                 font-weight: 500;
                 letter-spacing: 2px;
                 text-transform: uppercase;
@@ -1483,7 +1483,7 @@ input:focus {
                     font-size: 11px;
                 }
                 @media #{$breakpoint-xs-landscape} {
-                    font-size: 13px;
+                    font-size: 15px;
                     margin-right: 12px;
                 }
             }
@@ -1629,7 +1629,7 @@ input:focus {
                 position: relative;
                 z-index: 1;
                 display: inline-block;
-                font-size: 13px;
+                font-size: 15px;
                 font-weight: 500;
                 letter-spacing: 2px;
                 text-transform: uppercase;
@@ -1693,7 +1693,7 @@ input:focus {
             position: relative;
             z-index: 1;
             display: inline-block;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -1948,19 +1948,19 @@ blockquote {
                     width: 34px;
                     height: 34px;
                     line-height: 34px;
-                    font-size: 13px;
+                    font-size: 15px;
                 }
                 @media #{$breakpoint-md} {
                     width: 34px;
                     height: 34px;
                     line-height: 34px;
-                    font-size: 13px;
+                    font-size: 15px;
                 }
                 @media #{$breakpoint-xs} {
                     width: 34px;
                     height: 34px;
                     line-height: 34px;
-                    font-size: 13px;
+                    font-size: 15px;
                 }
             }
         }
@@ -2171,7 +2171,7 @@ blockquote {
             }
             .like,
             .reply {
-                font-size: 13px;
+                font-size: 15px;
                 font-weight: 400;
                 text-transform: uppercase;
                 height: 30px;

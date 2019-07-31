@@ -5,7 +5,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from blog.models import Blog
 
-
+# with open('../media/default.jpg','rb') as f:
+#     default_portrait = f.read()
 # Create your models here.
 class UserExtension(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name="extension",null=True)
