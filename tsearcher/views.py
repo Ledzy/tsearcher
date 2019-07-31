@@ -1,14 +1,20 @@
 from django.shortcuts import render_to_response, get_object_or_404, render, redirect
 from django.contrib.auth import login, authenticate, logout, get_user_model
 from account.models import UserExtension
+from blog.models import Blog
+import random
 
 User = get_user_model()
+blog_display = 5
 
 
 def index(request):
-    user = request.user
     context = {}
+    user = request.user
+    newest_blogs = Blog.objects.order_by('created_time')[:blog_display]
     context['user'] = user
+    context['newest_blogs'] = newest_blogs
+    context['read_count'] = random.randint(50,150) #先随机代替吧
     return render(request,'index.html',context)
 
 def about(request):

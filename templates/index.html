@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load comment_tags %}
+{% load likes_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -148,20 +150,6 @@
                     <h5>最热博文</h5>
                 </div>
 
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex">
-                    <div class="post-thumbnail">
-                        <img src="{% static 'img/bg-img/4.jpg'  %}" alt=""> 
-                    </div>
-                    <div class="post-content">
-                        <a href="/blog/4" class="post-title">触景”方能“生情”</a>
-                        <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 528</a>
-                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>  87</a>
-                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i>  12</a>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Single Blog Post -->
                 <div class="single-blog-post d-flex">
@@ -231,6 +219,27 @@
                     <h5>最新博文</h5>
                 </div>
 
+                {% for blog in newest_blogs %}
+                    {% get_comment_count blog as comment_count %}
+                    {% get_like_count blog as like_count %}
+
+                <!-- Single Blog Post -->
+                <div class="single-blog-post d-flex">
+                    <div class="post-thumbnail">
+                        <img src="{% static 'img/bg-img/4.jpg'  %}" alt=""> 
+                    </div>
+                    <div class="post-content">
+                        <a href="/blog/4" class="post-title">{{blog.title}}</a>
+                        <div class="post-meta d-flex justify-content-between">
+                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i>{{read_count}}</a>
+                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>{{like_count}} </a>
+                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} </a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                {% endfor %}
+
                 <!-- Single Blog Post -->
                 <div class="single-blog-post d-flex">
                     <div class="post-thumbnail">
@@ -241,51 +250,6 @@
                         <div class="post-meta d-flex justify-content-between">
                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 18</a>
                             <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 4</a>
-                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 1</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex">
-                    <div class="post-thumbnail">
-                        <img src="{% static 'img/bg-img/10.jpg'  %}" alt="">
-                    </div>
-                    <div class="post-content">
-                        <a href="single-post.html" class="post-title">数学该如何备课？</a>
-                        <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 14</a>
-                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 4</a>
-                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 2</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex">
-                    <div class="post-thumbnail">
-                        <img src="{% static 'img/bg-img/11.jpg' %}" alt="">
-                    </div>
-                    <div class="post-content">
-                        <a href="single-post.html" class="post-title">基于核心素养培养的中学教育</a>
-                        <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 10</a>
-                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 2</a>
-                            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 0</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex">
-                    <div class="post-thumbnail">
-                        <img src="{% static 'img/bg-img/12.jpg'  %}" alt="">
-                    </div>
-                    <div class="post-content">
-                        <a href="single-post.html" class="post-title">打铁还需自身硬--浅谈语文教育</a>
-                        <div class="post-meta d-flex justify-content-between">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 8</a>
-                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 3</a>
                             <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 1</a>
                         </div>
                     </div>
