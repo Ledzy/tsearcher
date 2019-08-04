@@ -182,7 +182,7 @@
                                     </div>
                                     <div class="col-12">
                                             <!-- <button class="btn mag-btn mt-30" type="submit">保存草稿</button> -->
-                                        <a onClick="CKupdate();$('#upload_blog').ajaxSubmit();" class="btn mag-btn mt-30">发表</a>
+                                        <a onClick="post_blog()" class="btn mag-btn mt-30">发表</a>
                             </form>
                                     </div>
                             </div>
@@ -253,11 +253,18 @@
     <!-- ##### All Javascript Script ##### -->
     {% block script_extends %}{% endblock %}
     <script>
+    alert("资源上传功能正在开发中，敬请期待")
     function CKupdate(){
         console.log('here')
         for ( instance in CKEDITOR.instances )
             CKEDITOR.instances[instance].updateElement();
     }
+    </script>
+    <script>
+    function post_blog(){
+        alert("我们收到了您的请求，博客将在审核后被发表");
+    }
+    
     </script>
 
     <!-- jQuery-2.2.4 js -->

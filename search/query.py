@@ -1,9 +1,9 @@
+from ON_LSTM.parse_test import get_df
 import pandas as pd
 import jieba
 import math
 import jieba.analyse
-
-
+import math
 
 class Word():
     def __init__(self):
@@ -101,14 +101,16 @@ def BM25_one_word(word,document_idx,index,df,avg_document_len,document_count,qtf
     
 def BM25(sentence,document_idx,index,df,avg_document_len,document_count):
     seg_list = jieba.lcut(sentence,cut_all=True)
+    df = get_df(sentence)
+
     score = 0
-    for word in seg_list:
-        score += BM25_one_word(word,document_idx,index,df,avg_document_len,document_count)
+    for i, word in enumerate(seg_list):
+        score += BM25_one_word(word,document_idx,index,df,avg_document_len,document_count) * math.log(1/df[i])
     return score
 
 def get_documents(sentence,index,document_count,df,avg_document_len,top_count=10,subject=None):
     scores = {}
-    sentence = seg_sentence(sentence)
+    # sentence = seg_sentence(sentence)
 
     if subject is not None:
         target_indices = df.loc[df.subject==subject].index
@@ -156,12 +158,13 @@ def seg_sentence(sentence):
 stopwords = stopwordslist('stopwords.txt')  # 这里加载停用词的路径  
 
 if __name__ == "__main__":
-    query = "必修"
-    df = pd.read_csv('slides.csv')
-    # document_count = df.shape[0]
-    # avg_document_len = df['text'].str.len().mean()
-    index = get_index(df)
-    # print(get_documents(query,index,document_count,df,avg_document_len))
-    file_idx = get_slides(query,index,df)
-    for i in file_idx:
-        print(df.at[i,'file_name'])
+    # query = "必修"
+    # df = pd.read_csv('slides.csv')
+    # # document_count = df.shape[0]
+    # # avg_document_len = df['text'].str.len().mean()
+    # index = get_index(df)
+    # # print(get_documents(query,index,document_count,df,avg_document_len))
+    # file_idx = get_slides(query,index,df)
+    # for i in file_idx:
+    #     print(df.at[i,'file_name'])
+    print('hello world')
