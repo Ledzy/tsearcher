@@ -71,17 +71,7 @@
                                     {% else %}
                                     <li><a href="/login">登录</a></li>
                                     {% endif %}
-                                    <!-- <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="video-post.html">Single Video Post</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="contact.html">联系我们</a></li>
-                                            <li><a href="submit-video.html">上传教学资源</a></li>
-                                            <li><a href="login.html">登录</a></li>
-                                        </ul>
-                                    </li> -->
+
                                     
                                     
                                 </ul>
@@ -90,17 +80,10 @@
                         </div>
 
                         <div class="top-meta-data d-flex align-items-center">
-                            <!-- Top Search Area -->
-                            <!-- <div class="top-search-area">
-                                <form action="index.html" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Search and hit enter...">
-                                    <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </form>
-                            </div> -->
                             <!-- Login -->
                             <a href="/login" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
                             <!-- Submit Video -->
-                            <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">提交作品</span></a>
+                            <a href="javascript:void(0)" onclick="upload()" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">发布</span></a>
                         </div>
                     </div>
                 </nav>
@@ -134,7 +117,7 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
 
     <!-- ##### Mag Posts Area Start ##### -->
     <section class="mag-posts-area d-flex flex-wrap">
@@ -313,13 +296,6 @@
 
                                 <div class="single--slide">
                             
-
-                                    
-
-                                   
-
-                                
-
                                     <!-- Single Blog Post -->
                                     <div class="single-blog-post d-flex style-3">
                                         <div class="post-thumbnail">
@@ -387,58 +363,31 @@
                 </div>
             </div>
 
-            <!-- Most Viewed Videos -->
-            
 
-            <!-- Sports Videos -->
-            <div class="sports-videos-area">
-                <!-- Section Title -->
-
-
-                <div class="sports-videos-slides owl-carousel mb-30">
-                    
-
-                    <!-- Single Featured Post -->
-                    
-                </div>
-
-                <div class="row">
-
-                    
-                </div>
-
-            </div>
         </div>
 
-        <!-- >>>>>>>>>>>>>>>>>>>>
-         Post Right Sidebar Area
-        <<<<<<<<<<<<<<<<<<<<< -->
-
-            <!-- Sidebar Widget -->
-            <div class="single-sidebar-widget p-30">
-                    <!-- Section Title -->
-                    <div class="section-heading">
-                        <h5>知名讲师</h5>
-                    </div>
-                    {% for user in ue %}
-
-    
-                    <!-- Single YouTube Channel -->
-                    <div class="single-youtube-channel d-flex">
-                        <div class="youtube-channel-thumbnail">
-                            <img src="{{user.portrait.url}}" alt="">
-                        </div>
-                        <div class="youtube-channel-content">
-                            <a href="single-post.html" class="channel-title">{{user.user.username}}</a>
-                            <a href="#" class="btn subscribe-btn"> 关注</a>
-                        </div>
-                    </div>
-                    {% endfor %}
-    
+        <!-- Sidebar Widget -->
+        <div class="single-sidebar-widget p-30">
+                <!-- Section Title -->
+                <div class="section-heading">
+                    <h5>知名讲师</h5>
                 </div>
+                {% for user in ue %}
+
+                <!-- Single YouTube Channel -->
+                <div class="single-youtube-channel d-flex">
+                    <div class="youtube-channel-thumbnail">
+                        <img src="{{user.portrait.url}}" alt="">
+                    </div>
+                    <div class="youtube-channel-content">
+                        <a href="single-post.html" class="channel-title">{{user.user.username}}</a>
+                        <a href="#" class="btn subscribe-btn"> 关注</a>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
     
-    
-            </div>
+        </div>
     </section>
     <!-- ##### Mag Posts Area End ##### -->
 
@@ -458,7 +407,7 @@
                 <!-- Footer Widget Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="footer-widget">
-                        <h6 class="widget-title">Categories</h6>
+                        <h6 class="widget-title">博客</h6>
                         <nav class="footer-widget-nav">
                             <ul>
                                 <li><a href="{% url 'blogs_with_type' 3 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>教学心得</a></li>
@@ -476,25 +425,46 @@
                 <!-- Footer Widget Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="footer-widget">
-                        <h6 class="widget-title">Channels</h6>
-                        <ul class="footer-tags">
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>语文</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>数学</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>英语</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>政治</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>历史</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>地理</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>生物</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>物理</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>化学</a></li>
+                        <h6 class="widget-title">推荐</h6>
+                        <!-- Single Blog Post -->
+                        <div class="single-blog-post style-2 d-flex">
+                            <div class="post-content">
+                                <a href="blog/2" class="post-title">让孩子学会爱</a>
+                                <div class="post-meta d-flex justify-content-between">
+                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 3</a>
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 0</a>
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 0</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="single-blog-post style-2 d-flex">
+                            <div class="post-content">
+                                <a href="blog/4" class="post-title">触景”方能“生情”</a>
+                                <div class="post-meta d-flex justify-content-between">
+                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 5</a>
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 0</a>
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="footer-widget">
+                        <h6 class="widget-title">科目</h6>
+                        <ul class="footer-tags">
+                                {% for subject in subjects %}
+                                <li><a href="/search/teaching_plan/subject/{{subject.type_name}}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>{{subject.type_name}}</a></li>
+                                {% endfor %}
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        
     </footer>
     <!-- ##### Footer Area End ##### -->
 
@@ -506,6 +476,17 @@
             console.log(text)
             window.location.href='search/teaching_plan/'+text
             return text
+        }
+
+        function upload(){
+            var auth = "{{request_user.is_authenticated}}";
+            console.log(auth);
+            if (auth=="True"){
+                window.location.href='blog/upload';
+            }
+            else{
+                alert("请先登录")
+            }
         }
     </script>
 

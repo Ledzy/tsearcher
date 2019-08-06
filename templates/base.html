@@ -64,18 +64,6 @@
                                     {% else %}
                                     <li><a href="/login">登录</a></li>
                                     {% endif %}
-                                    <!-- <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="video-post.html">Single Video Post</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="contact.html">联系我们</a></li>
-                                            <li><a href="submit-video.html">上传教学资源</a></li>
-                                            <li><a href="login.html">登录</a></li>
-                                        </ul>
-                                    </li> -->
-                                    
                                     
                                 </ul>
                             </div>
@@ -83,17 +71,10 @@
                         </div>
 
                         <div class="top-meta-data d-flex align-items-center">
-                            <!-- Top Search Area -->
-                            <!-- <div class="top-search-area">
-                                <form action="index.html" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Search and hit enter...">
-                                    <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </form>
-                            </div> -->
                             <!-- Login -->
                             <a href="/login" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
                             <!-- Submit Video -->
-                            <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">提交作品</span></a>
+                            <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">发布</span></a>
                         </div>
                     </div>
                 </nav>
@@ -111,117 +92,8 @@
             <div class="row justify-content-center">
                 {% block content %}{% endblock %}
 
-                <div class="col-12 col-md-6 col-lg-5 col-xl-4">
-                    <div class="sidebar-area bg-white mb-30 box-shadow">
-                        <!-- Sidebar Widget -->
-
-                        <!-- Sidebar Widget -->
-                        <div class="single-sidebar-widget p-30">
-                            <!-- Section Title -->
-                            <div class="section-heading">
-                                <h5>分类</h5>
-                            </div>
-
-                            <!-- Catagory Widget -->
-                            <ul class="catagory-widgets">
-                                <li><a href="{% url 'blogs_with_type' 3 %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>  教学心得</span> <span>3</span></a></li>
-                                <li><a href="{% url 'blogs_with_type' 4 %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>  校园故事</span> <span>0</span></a></li>
-                                <li><a href="{% url 'blogs_with_type' 5 %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>  生活记录</span> <span>1</span></a></li>
-                                <li><a href="{% url 'blogs_with_type' 6 %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>  课堂实录</span> <span>0</span></a></li>
-                                <li><a href="{% url 'blogs_with_type' 7 %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>  旅途风光</span> <span>0</span></a></li>
-                                <li><a href="{% url 'blogs_with_type' 8 %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>  国外见闻</span> <span>0</span></a></li>
-                                <li><a href="{% url 'blogs_with_type' 9 %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>  学习方法</span> <span>0</span></a></li>
-
-                            </ul>
-                        </div>
-
-                        <!-- Sidebar Widget -->
-                        <div class="single-sidebar-widget">
-                            <a href="#" class="add-img"><img src="img/bg-img/add2.png" alt=""></a>
-                        </div>
-
-                        <!-- Sidebar Widget -->
-                        <div class="single-sidebar-widget p-30">
-                            <!-- Section Title -->
-                            <div class="section-heading">
-                                <h5>知名博主</h5>
-                            </div>
-
-                            <!-- Single YouTube Channel -->
-                            <div class="single-youtube-channel d-flex">
-                                <div class="youtube-channel-thumbnail">
-                                    <img src="{% static 'img/bg-img/14.jpg'  %}" alt="">
-                                </div>
-                                <div class="youtube-channel-content">
-                                    <a href="single-post.html" class="channel-title">上海高中老陈</a>
-                                    <a href="#" class="btn subscribe-btn"> 关注</a>
-                                </div>
-                            </div>
-            
-                            <!-- Single YouTube Channel -->
-                            <div class="single-youtube-channel d-flex">
-                                <div class="youtube-channel-thumbnail">
-                                    <img src="{% static 'img/bg-img/15.jpg'  %}" alt="">
-                                </div>
-                                <div class="youtube-channel-content">
-                                    <a href="single-post.html" class="channel-title">雅礼李老师</a>
-                                    <a href="#" class="btn subscribe-btn"> 关注</a>
-                                </div>
-                            </div>
-            
-                            <!-- Single YouTube Channel -->
-                            <div class="single-youtube-channel d-flex">
-                                <div class="youtube-channel-thumbnail">
-                                    <img src="{% static 'img/bg-img/16.jpg'  %}" alt="">
-                                </div>
-                                <div class="youtube-channel-content">
-                                    <a href="single-post.html" class="channel-title">CiciChen</a>
-                                    <a href="#" class="btn subscribe-btn"> 关注</a>
-                                </div>
-                            </div>
-            
-                            <!-- Single YouTube Channel -->
-                            <div class="single-youtube-channel d-flex">
-                                <div class="youtube-channel-thumbnail">
-                                    <img src="{% static 'img/bg-img/17.jpg'  %}" alt="">
-                                </div>
-                                <div class="youtube-channel-content">
-                                    <a href="single-post.html" class="channel-title">王后雄</a>
-                                    <a href="#" class="btn subscribe-btn"> 关注</a>
-                                </div>
-                            </div>
-            
-                            <!-- Single YouTube Channel -->
-                            <div class="single-youtube-channel d-flex">
-                                <div class="youtube-channel-thumbnail">
-                                    <img src="{% static 'img/bg-img/18.jpg'  %}" alt="">
-                                </div>
-                                <div class="youtube-channel-content">
-                                    <a href="single-post.html" class="channel-title">葛军</a>
-                                    <a href="#" class="btn subscribe-btn"> 关注</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Sidebar Widget -->
-                        <div class="single-sidebar-widget p-30">
-                            <!-- Section Title -->
-                            <div class="section-heading">
-                                <h5>订阅中心</h5>
-                            </div>
-
-                            <div class="newsletter-form">
-                                <p>我们将根据您的兴趣，向您的邮箱实时推送最新的博文</p>
-                                <form action="#" method="get">
-                                    <input type="search" name="widget-search" placeholder="输入您的邮箱">
-                                    <button type="submit" class="btn mag-btn w-100">订阅</button>
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                {% block sidebar %} {% endblock %}
+                
             </div>
         </div>
     </div>
@@ -243,7 +115,7 @@
                 <!-- Footer Widget Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="footer-widget">
-                        <h6 class="widget-title">Categories</h6>
+                        <h6 class="widget-title">博客</h6>
                         <nav class="footer-widget-nav">
                             <ul>
                                 <li><a href="{% url 'blogs_with_type' 3 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>教学心得</a></li>
@@ -253,7 +125,6 @@
                                 <li><a href="{% url 'blogs_with_type' 7 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>旅途风光</a></li>
                                 <li><a href="{% url 'blogs_with_type' 8 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>国外见闻</a></li>
                                 <li><a href="{% url 'blogs_with_type' 9 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>学习方法</a></li>
-
                             </ul>
                         </nav>
                     </div>
@@ -262,40 +133,61 @@
                 <!-- Footer Widget Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="footer-widget">
-                        <h6 class="widget-title">Channels</h6>
-                        <ul class="footer-tags">
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>语文</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>数学</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>英语</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>政治</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>历史</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>地理</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>生物</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>物理</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>化学</a></li>
+                        <h6 class="widget-title">推荐</h6>
+                        <!-- Single Blog Post -->
+                        <div class="single-blog-post style-2 d-flex">
+                            <div class="post-content">
+                                <a href="/blog/2" class="post-title">让孩子学会爱</a>
+                                <div class="post-meta d-flex justify-content-between">
+                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 3</a>
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 0</a>
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 0</a>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="single-blog-post style-2 d-flex">
+                            <div class="post-content">
+                                <a href="/blog/4" class="post-title">触景”方能“生情”</a>
+                                <div class="post-meta d-flex justify-content-between">
+                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 5</a>
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 0</a>
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="footer-widget">
+                        <h6 class="widget-title">科目</h6>
+                        <ul class="footer-tags">
+                            {% for subject in subjects %}
+                            <li><a href="/search/teaching_plan/subject/{{subject.type_name}}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>{{subject.type_name}}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        
     </footer>
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### All Javascript Script ##### -->
     {% block script_extends %}{% endblock %}
     <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
     <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' }"></script>
     <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
     <!-- Active js -->
-    <script src="js/active.js"></script>
+    <script src="{% static 'js/active.js' %}"></script>
 </body>
 
 </html>

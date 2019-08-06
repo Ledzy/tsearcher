@@ -6,8 +6,10 @@ from django.contrib.contenttypes.models import ContentType
 
 from .models import Blog, BlogType
 from read_statistics.utils import read_statistics_once_read
+from search.models import Subject
 
 
+subjects = Subject.objects.all()
 
 def get_blog_list_common_data(request, blogs_all_list):
     paginator = Paginator(blogs_all_list, settings.EACH_PAGE_BLOGS_NUMBER)
@@ -36,12 +38,14 @@ def get_blog_list_common_data(request, blogs_all_list):
                                          created_time__month=blog_date.month).count()
         blog_dates_dict[blog_date] = blog_count
 
+
     context = {}
     context['blogs'] = page_of_blogs.object_list
     context['page_of_blogs'] = page_of_blogs
     context['page_range'] = page_range
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_dates'] = blog_dates_dict
+    context['subjects'] = subjects
     return context
 
 def blog_list(request):
@@ -71,6 +75,7 @@ def blog_detail(request, blog_pk):
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last()
     context['next_blog'] = Blog.objects.filter(created_time__lt=blog.created_time).first()
     context['blog'] = blog
+    context['subjects'] = subjects
     response = render(request, 'blog_detail.html', context) # 响应
     response.set_cookie(read_cookie_key, 'true') # 阅读cookie标记
     return response

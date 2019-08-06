@@ -123,6 +123,7 @@ def query_subject_plan(request,subject_name):
         plan = TeachingPlan.objects.create(index=i,content=content,star=star,filename=filename,subject=subject_model)
         files.append(plan)
 
+    context['subject_name'] = subject_name
     context['subjects'] = Subject.objects.all()
     context['files'] = files
     context['is_teaching_plan'] = True
@@ -146,6 +147,7 @@ def query_subject_slide(request,subject_name):
         files.append(slide)
     
     context['subjects'] = Subject.objects.all()
+    context['subject_name'] = subject_name
     context['files'] = files
     context['is_teaching_plan'] = False
     return render(request,'search.html',context)

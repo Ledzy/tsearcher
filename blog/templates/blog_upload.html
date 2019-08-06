@@ -1,109 +1,16 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+{% block title %} 发布博客 {% endblock %}
 
-    <!-- Title -->
-    <title>新建一篇博客</title>
+{% block header_extends %} 
 
-    <!-- Favicon -->
-    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'search_style.css' %}">
-    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
-    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
-</head>
-
-<body>
-
-
-    <!-- ##### Header Area Start ##### -->
-    <header class="header-area">
-
-        <!-- Navbar Area -->
-        <div class="mag-main-menu" id="sticker">
-            <div class="classy-nav-container breakpoint-off">
-                <!-- Menu -->
-                <nav class="classy-navbar justify-content-between" id="magNav">
-
-                    <!-- Nav brand -->
-                    <a href="/" class="nav-brand"><img src="{% static 'logo_v2.jpg' %}" style="height:70px; width:200px" alt=""></a>
-
-                    <!-- Navbar Toggler -->
-                    <div class="classy-navbar-toggler">
-                        <span class="navbarToggler"><span></span><span></span><span></span></span>
-                    </div>
-
-                    <!-- Nav Content -->
-                    <div class="nav-content d-flex align-items-center">
-                        <div class="classy-menu">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li class="active"><a href="{% url 'home' %}">主页</a></li>
-                                    <li><a href="/blog">教学博客</a></li>
-                                    <li><a href="/contact_us">联系我们</a></li>
-                                    {% if user.is_authenticated %}
-                                    <li>欢迎您,{{user.username}}</li>
-                                    {% else %}
-                                    <li><a href="/login">登录</a></li>
-                                    {% endif %}
-                                    <!-- <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="video-post.html">Single Video Post</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="contact.html">联系我们</a></li>
-                                            <li><a href="submit-video.html">上传教学资源</a></li>
-                                            <li><a href="login.html">登录</a></li>
-                                        </ul>
-                                    </li> -->
-                                    
-                                    
-                                </ul>
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-
-                        <div class="top-meta-data d-flex align-items-center">
-                            <!-- Top Search Area -->
-                            <!-- <div class="top-search-area">
-                                <form action="index.html" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Search and hit enter...">
-                                    <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </form>
-                            </div> -->
-                            <!-- Login -->
-                            <a href="/login" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
-                            <!-- Submit Video -->
-                            <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">提交作品</span></a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </header>
-    <!-- ##### Header Area End ##### -->
-
-
+{% endblock %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% block content %}
     <!-- ##### Breadcrumb Area Start ##### -->
     <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(../../static/img/bg-img/49.jpg);">
         <div class="container h-100">
@@ -181,8 +88,8 @@
                                         </script>
                                     </div>
                                     <div class="col-12">
-                                            <!-- <button class="btn mag-btn mt-30" type="submit">保存草稿</button> -->
-                                        <a onClick="CKupdate();$('#upload_blog').ajaxSubmit();" class="btn mag-btn mt-30">发表</a>
+                                        <button class="btn mag-btn mt-30" onclick="CKupdate();$('#upload_blog').ajaxSubmit();" type="submit">发表</button>
+                                        <!-- <a onClick="CKupdate();$('#upload_blog').ajaxSubmit();" class="btn mag-btn mt-30">发表</a> -->
                             </form>
                                     </div>
                             </div>
@@ -192,84 +99,19 @@
             </div>
         </div>
     </div>
+{% endblock %}
 
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area">
-        <div class="container">
-            <div class="row">
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="footer-widget">
-                        <!-- Logo -->
-                        <a href="home" class="foo-logo"><img src="{% static 'logo.png' %}" style="height:150px;width:150px" alt=""></a>
-                        <p>我们是tsearcher,致力为老师打造一流的信息交流平台，提供最优质的教育资源</p>
-                    </div>
-                </div>
-                
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="footer-widget">
-                        <h6 class="widget-title">Categories</h6>
-                        <nav class="footer-widget-nav">
-                            <ul>
-                                <li><a href="{% url 'blogs_with_type' 3 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>教学心得</a></li>
-                                <li><a href="{% url 'blogs_with_type' 4 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>校园故事</a></li>
-                                <li><a href="{% url 'blogs_with_type' 5 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>生活记录</a></li>
-                                <li><a href="{% url 'blogs_with_type' 6 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>课堂实录</a></li>
-                                <li><a href="{% url 'blogs_with_type' 7 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>旅途风光</a></li>
-                                <li><a href="{% url 'blogs_with_type' 8 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>国外见闻</a></li>
-                                <li><a href="{% url 'blogs_with_type' 9 %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>学习方法</a></li>
 
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="footer-widget">
-                        <h6 class="widget-title">Channels</h6>
-                        <ul class="footer-tags">
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>语文</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>数学</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>英语</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>政治</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>历史</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>地理</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>生物</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>物理</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>化学</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
-    </footer>
-    <!-- ##### Footer Area End ##### -->
-
-    <!-- ##### All Javascript Script ##### -->
-    {% block script_extends %}{% endblock %}
-    <script>
-    function CKupdate(){
-        console.log('here')
-        for ( instance in CKEDITOR.instances )
-            CKEDITOR.instances[instance].updateElement();
-    }
-    </script>
-
-    <!-- jQuery-2.2.4 js -->
-    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
-    <!-- Popper js -->
-    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
-    <!-- Bootstrap js -->
-    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-    <!-- All Plugins js -->
-    <script src="{% static 'js/plugins/plugins.js' %}"></script>
-    <!-- Active js -->
-    <script src="{% static 'js/active.js' %}"></script>
-</body>
+{% block script_extends %}
+<script>
+function CKupdate(){
+    console.log('here')
+    for ( instance in CKEDITOR.instances )
+        CKEDITOR.instances[instance].updateElement();
+}
+</script>
+<script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+{% endblock %}
 
 </html>
