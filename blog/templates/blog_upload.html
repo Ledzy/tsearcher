@@ -102,7 +102,7 @@
 {% endblock %}
 
 
-{% block script_extends %}
+{% block script_extends %}{% endblock %}
 <script>
 function CKupdate(){
     console.log('here')
@@ -110,8 +110,6 @@ function CKupdate(){
         CKEDITOR.instances[instance].updateElement();
 }
 </script>
-<script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-{% endblock %}
+
 
 </html>
