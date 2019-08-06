@@ -74,7 +74,7 @@
                             <!-- Login -->
                             <a href="/login" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
                             <!-- Submit Video -->
-                            <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">发布</span></a>
+                            <a href="javascript:void(0)" onclick="upload()" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">发布</span></a>
                         </div>
                     </div>
                 </nav>
@@ -107,7 +107,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="footer-widget">
                         <!-- Logo -->
-                        <a href="home" class="foo-logo"><img src="{% static 'logo.png' %}" style="height:150px;width:150px" alt=""></a>
+                        <a href="/" class="foo-logo"><img src="{% static 'logo.png' %}" style="height:150px;width:150px" alt=""></a>
                         <p>我们是tsearcher,致力为老师打造一流的信息交流平台，提供最优质的教育资源</p>
                     </div>
                 </div>
@@ -177,7 +177,19 @@
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### All Javascript Script ##### -->
-    {% block script_extends %}{% endblock %}
+    {% block script_extends %} {% endblock %}
+    <script>
+    function upload(){
+        var auth = "{{request_user.is_authenticated}}";
+        console.log(auth);
+        if (auth=="True"){
+            window.location.href='blog/upload';
+        }
+        else{
+            alert("请先登录")
+        }
+    }
+    </script>
     <!-- jQuery-2.2.4 js -->
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
     <!-- Popper js -->

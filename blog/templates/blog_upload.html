@@ -53,6 +53,7 @@
                         <!-- Single Catagory Post -->
                         <div class="single-catagory-post d-flex flex-wrap">
                             <form action='upload' method="POST" id="upload_blog" name="upload_blog">
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -88,8 +89,8 @@
                                         </script>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn mag-btn mt-30" onclick="CKupdate();$('#upload_blog').ajaxSubmit();" type="submit">发表</button>
-                                        <!-- <a onClick="CKupdate();$('#upload_blog').ajaxSubmit();" class="btn mag-btn mt-30">发表</a> -->
+                                        <!-- <button class="btn mag-btn mt-30" onclick="receive()" type="submit">发表</button> -->
+                                        <a onclick="receive()" class="btn mag-btn mt-30">发表</a>
                             </form>
                                     </div>
                             </div>
@@ -102,14 +103,19 @@
 {% endblock %}
 
 
-{% block script_extends %}{% endblock %}
+{% block script_extends %}
 <script>
+alert("发布功能正在完善中，敬请期待")
+function receive(){
+    alert("我们已经收到了您的请求，审核通过后将发布在社区中")
+}
+
 function CKupdate(){
     console.log('here')
     for ( instance in CKEDITOR.instances )
         CKEDITOR.instances[instance].updateElement();
 }
 </script>
-
+{% endblock %}
 
 </html>

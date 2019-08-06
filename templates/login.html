@@ -3,7 +3,7 @@
 <html >
 <head>
    
-    <title>Neer - Real Estate HTML Template</title>
+    <title>Tsearcher-登录</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
@@ -63,11 +63,11 @@
                     <!-- details -->
                     <div class="details">
                         <!-- Logo -->
-                        <a href="index.html">
-                            <img src="{% static 'img/black-logo.png' %}" class="cm-logo" alt="black-logo">
+                        <a href="{% url 'home' %}">
+                            <img src="{% static 'logo_v2.jpg' %}" class="cm-logo" alt="black-logo">
                         </a>
                         <!-- Name -->
-                        <h3>Sign into your account</h3>
+                        <h3>登录您的账户</h3>
                         <!-- Form start -->
                         <form action="/login/" method="POST">
                             {% csrf_token %}
@@ -75,16 +75,16 @@
                                 <input type="username" name="username" class="input-text" placeholder="用户名">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="input-text" placeholder="Password">
+                                <input type="password" name="password" class="input-text" placeholder="密码">
                             </div>
                             <div class="checkbox">
                                 <div class="ez-checkbox pull-left">
                                     <label>
                                         <input type="checkbox" class="ez-hide">
-                                        Remember me
+                                        记住密码
                                     </label>
                                 </div>
-                                <a href="forgot-password.html" class="link-not-important pull-right">Forgot Password</a>
+                                <a href="forgot-password.html" class="link-not-important pull-right">忘记密码</a>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="form-group mb-0">
@@ -101,7 +101,7 @@
                     </div>
                     <!-- Footer -->
                     <div class="footer">
-                        <span>Don't have an account? <a href="/signup/">Register here</a></span>
+                        <span>没有账号？ <a href="/signup/">注册</a></span>
                     </div>
                 </div>
                 <!-- Form content box end -->
